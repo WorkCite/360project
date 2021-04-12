@@ -110,20 +110,32 @@ body{
 
   .left{
     width:60%;
+    padding:0 1em 0.5em 1em;
+
   }
 
   .img{
     overflow-y: auto;
     display:grid;
     background-color: white;
-    margin:10px;
+    margin:0.5em;
     border:solid lightgrey 1px;
     border-radius: 10px;
   }
   .img:hover{
     border:solid grey 1px;
   }
-  
+  .right{
+    width:30%;
+    height:fit-content;
+    display:block;
+    position: relative;
+    background-color:white ;
+    border:solid lightgrey 1px;
+    border-radius: 10px;
+    margin-top: 0.5em;
+    padding:0.5em 1em 0.5em 1em;
+  }
 footer{
   padding:10px 20px 10px 20px;
   background-color: white;

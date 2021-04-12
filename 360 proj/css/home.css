@@ -4,8 +4,9 @@ body{
 }
 
   .header{
+    border-top: solid lightgrey 1px;
     background-color: white;
-    padding:1em;
+    padding:0.5em;
     position:relative;
     height:auto;
     display:inline-flexbox;
@@ -81,6 +82,9 @@ body{
   color:black;
 }
 
+.posts{
+  display:block;
+}
   .center{
     padding: 10pt;
     padding-left: 15%;
@@ -93,9 +97,13 @@ body{
     display:inline-block;
     width: 10%;
     background-color: #0f0;
-    border: 10px solid #fff;
+    border:solid lightgrey 1px;
+    border-radius: 10px;  
+    padding:0.5em;
   }
-  
+  .col:hover{
+    border:solid grey 1px;
+  }
   .popularposts{
     display:flex;
   }
@@ -105,7 +113,15 @@ body{
   }
 
   .img{
-    display:block;
+    overflow-y: auto;
+    display:grid;
+    background-color: white;
+    margin:10px;
+    border:solid lightgrey 1px;
+    border-radius: 10px;
+  }
+  .img:hover{
+    border:solid grey 1px;
   }
   
 footer{

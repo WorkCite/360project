@@ -1,55 +1,83 @@
 body{
   background-color: rgb(240, 228, 228);
+  margin:0;
 }
 
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    
+  .header{
+    background-color: white;
+    padding:1em;
+    position:relative;
+    height:auto;
+    display:inline-flexbox;
   }
-  
-  li {
-    float: right;
-  }
-  
-  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 20px;
+  .home{
+    color:rgb(51, 132, 255);
+    margin:0 0.5em 0 1em;
     text-decoration: none;
-  }
-  
-  /* Change the link color to #111 (black) on hover */
-  li a:hover {
-    background-color: #111;
-  }
+    float:left;
+    border-radius: 30px;
+    background-color: white;
+    border: solid 1px;
+    border-color:rgb(51, 132, 255);
+    padding:7px;
+    padding-left: 20px;
+    padding-right: 20px;
 
+  }
   .active {
-    background-color:rgba(39, 12, 12, 0.048);
-  }
-
-  .search{
-   
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 12px 200px;
+    color:rgb(51, 132, 255);
+    border: solid 1px;
+    border-color:rgb(51, 132, 255);
+    margin:0 0.5em 0 0.5em;
     text-decoration: none;
-    font-size: 17px;
+    float:right;
+    border-radius: 30px;
+    background-color: white;
+    padding:7px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  
-  .searchmid{
-    display: block;
-    position: fixed; 
-    margin-left: 25%;
-    
-  }
+.signup{
+  color:white;
+  border: solid 1px;
+  border-color:rgb(51, 132, 255);
+  margin:0 0.5em 0 0.5em;
+  text-decoration: none;
+  float:right;
+  border-radius: 30px;
+  background-color: rgb(51, 132, 255);
+  padding:7px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.search{
+  left:670px;
+  position: relative;
+  margin:0 0.5em 0 0.5em;
+  display: inline-flex;
+  height:32px;
+  width:400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  border-radius:5px;
+}
+
+.searchBox {
+  border: 0;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  flex: 1;
+}
+.searchIcon {
+  width:20px;
+  height:20px;
+  color:grey;
+  background-color: white;
+  padding: 0.5rem;
+}
 
   .center{
+    padding: 10pt;
     padding-left: 15%;
     padding-right:15%;
     color:rgb(18, 145, 196);

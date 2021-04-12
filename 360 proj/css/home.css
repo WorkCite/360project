@@ -76,6 +76,11 @@ body{
   padding: 0.5rem;
 }
 
+.sub-header{
+  font-size: 10px;
+  color:black;
+}
+
   .center{
     padding: 10pt;
     padding-left: 15%;
@@ -103,8 +108,8 @@ body{
     display:block;
   }
   
-
-
-
-  
+footer{
+  padding:10px 20px 10px 20px;
+  background-color: white;
+}
   

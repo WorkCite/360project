@@ -1,0 +1,71 @@
+body{
+  background-color: rgb(240, 228, 228);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #111;
+  }
+
+  .active {
+    background-color:rgba(39, 12, 12, 0.048);
+  }
+
+  .search{
+   
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 12px 200px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .searchmid{
+    display: block;
+    position: fixed; 
+    margin-left: 25%;
+    
+  }
+
+  .center{
+    padding-left: 15%;
+    padding-right:15%;
+    color:rgb(18, 145, 196);
+    background-color: rgb(240, 246, 248);
+    
+  }
+
+  .row .col {
+    float: left;
+    width: 15%;
+    background-color: #0f0;
+    border: 10px solid #fff;
+  }
+  .popularposts{
+    display:inline;
+    
+  }
+  
+  

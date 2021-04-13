@@ -1,0 +1,36 @@
+.grid{
+  display: grid;
+  grid-template-columns: repeat(6,1fr);
+	grid-template-rows: 3fr 3fr 3fr 3fr 3fr 3fr;
+  height: 80%;
+	font-size: 50px;
+  margin-top:20%;
+  margin-bottom:20%;
+  margin-left:5%;
+  margin-right:5%;
+  color:white;
+}
+.grid>div{
+	background-color: #3e3b46;
+	min-height: 100px;
+  margin:5px;
+}
+
+.item1{
+	grid-column: span 4;
+  grid-row: span 3;
+}
+
+.item2{
+	grid-column: span 2;
+  grid-row: span 3;
+}
+
+.item3{
+  grid-column: span 2;
+	grid-row: span 4;
+}
+.item4{
+  grid-column: span 4;
+	grid-row: span 1;
+}

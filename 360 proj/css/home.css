@@ -7,6 +7,8 @@ body {
   width:100%;
   border-top: solid lightgrey 1px;
   background-color: white;
+  left:0;
+  top:0;
   padding: 0.5em;
   position: fixed;
   height: auto;
@@ -197,6 +199,6 @@ max-width: fit-content;
 }
 footer {
   padding: 10px 20px 10px 20px;
-
+  width:100%;
   background-color: white;
 }

@@ -3,7 +3,6 @@ $(function(){
   var modal = $(".modal");
   var btn = $(".post");
   var span = $('.close');
-  var block = $('.postBlock');
   btn.on('click', function(event){
    /*  var modal1 = $('<div class="modal" title="Basic dialog"></div>');
     var content = $(' <div class="modal-content"></div>');
@@ -44,30 +43,18 @@ $(function(){
       $('.paragraph').find('img').remove();
     }
   });
-});
-/* window.addEventListener('load', function(){
-  var modal = document.getElementsByClassName("modal")[0];
-
-  // Get the button that opens the modal
-  var btn = document.getElementsByClassName("post")[0];
-  
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
-  
-  // When the user clicks on the button, open the modal
-  btn.onclick = function() {
-    modal.style.display = "block";
-  }
-  
-  // When the user clicks on <span> (x), close the modal
-  span.onclick = function() {
-    modal.style.display = "none";
-  }
-  
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
+  /* newpost */
+  var form = $(".newpost-form");
+  var span2 = $('.closeform');
+  $('.newpost').on('click',function(){
+    form.fadeIn(1000);
+  });
+  span2.on('click',function(){
+form.fadeOut(1000);
+  });
+  $(window).on('click',function(event){
+    if($(event.target).is(form)){
+      form.fadeOut(1000);
     }
-  }
-}); */
+  });
+});

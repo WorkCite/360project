@@ -82,6 +82,7 @@ body {
   color: black;
 }
 
+
 .posts {
   display: block;
 }
@@ -117,6 +118,7 @@ body {
   padding: 0 1em 0.5em 0;
 }
 
+
 .img {
   overflow-y: auto;
   display: grid;
@@ -140,5 +142,6 @@ body {
 }
 footer {
   padding: 10px 20px 10px 20px;
+
   background-color: white;
 }

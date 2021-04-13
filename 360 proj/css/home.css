@@ -108,8 +108,8 @@ body {
 
 .col {
   display: inline-block;
-  width: 10%;
-  background-color: #0f0;
+  width: 30%;
+  background-color: rgb(169, 182, 169);
   border: solid lightgrey 1px;
   border-radius: 10px;
   padding: 0.5em;
@@ -135,6 +135,7 @@ body {
   min-width: 550px;
   min-height: 200px;
   overflow-y:scroll;
+  overflow:hidden;
   display: block;
   background-color: white;
   margin: 0.5em;
@@ -216,6 +217,7 @@ max-width: fit-content;
   border: solid lightgrey 1px;
   border-radius: 10px;
   margin-top: 0.5em;
+  margin-left:2em;
   padding: 0.5em 1em 0.5em 1em;
 }
 footer {
@@ -324,7 +326,6 @@ display:block;
 .closeform {
   display:inline-block;
   color: #aaa;
-  float: right;
   font-size: 28px;
   font-weight: bold;
 }

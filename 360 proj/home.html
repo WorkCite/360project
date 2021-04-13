@@ -34,6 +34,10 @@
             </div>
             <textarea class="inputContent" placeholder="type your content"></textarea>
         </div>
+            <div>
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Submit" name="submit">
+            </div>
     </div>
 </form>
 
@@ -56,11 +60,9 @@
                 <h1>Trending</h1>
             </div>
             <div class="group">
-                <div class="col">p1</div>
-                <div class="col">p2</div>
-                <div class="col">p3</div>
-                <div class="col">p4</div>
-                <div class="col">p5</div>
+                <div class="col"> <img  src="img/1.gif"></div>
+                <div class="col"> <img  src="img/1.gif"></div>
+                <div class="col"> <img  src="img/1.gif"></div>
             </div>
         </div>
         <div class="sub-header">
@@ -129,6 +131,35 @@
                             </div>
                         </div>
                     </div>
+                    <div class="postBlock">
+                        <div class="post">
+                            <div class="postHeader">
+                                <div class="authorIcon">
+                                    <img width="20pt" height="20pt">
+                                </div>
+                                <div class="author">
+                                    <p>Author3</p>
+                                </div>
+                                <div class="postTime">
+                                    <p>&middot; Posted (time)</p>
+                                </div>
+                            </div>
+                            <div class="content">
+                                <p>This is a post3.</p>
+                            </div>
+                            <div class="image">
+                                <img class="img" src="img/1.gif">
+                            </div>
+                            <div class="commentBlock">
+                                <div class="commentIcon">
+                                    <img width="20pt" height="20pt" src="img/commentIcon.png">
+                                </div>
+                                <div class="comments">
+                                    <p>Comments</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <!--                     <div class="post">
                         <div class="postTitle">
                             <h2>post1</h2>
@@ -153,19 +184,19 @@
                 <div class="sub-header">
                     <h2>Top view posts</h2>
                 </div>
-                <p>1 zzw</p>
-                <p>2 wrc</p>
-                <p>3 yyht</p>
+                <a href="#"><p>1 zzw</p></a>
+                <a href="#"><p>2 wrc</p></a>
+                <a href="#"><p>3 yyht</p></a>
             </div>
         </div>
     </div>
 
     <footer>
         <div class="footer">
-            <p><a href="home.html">Home</a> |
-                <a href="#">Search</a>
+            <p><a class="home" href="home.html">Home</a> 
             </p>
         </div>
+        <br/><br/>
         <div class="copyright">
             <p>Copyright © WorkCite Github student group</p>
         </div>

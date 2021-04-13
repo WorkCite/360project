@@ -146,6 +146,7 @@ footer {
   
   
     .dropbtn {
+      background-color: white;
     color:rgb(51, 132, 255);
     margin:0 0.5em 0 0.5em;
     padding:7px;
@@ -157,7 +158,7 @@ footer {
     border-radius: 30px;
     cursor: pointer;
     text-decoration: none;
-  
+  margin-right: 2em;
     }
 
 .dropdown {

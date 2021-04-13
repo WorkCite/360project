@@ -1,0 +1,65 @@
+body{
+    background-color: rgb(240, 228, 228);
+    margin:0;
+  }
+  
+    .header{
+      border-top: solid lightgrey 1px;
+      background-color: white;
+      padding:0.5em;
+      position:relative;
+      height:auto;
+      display:inline-flexbox;
+    }
+    .search{
+        left:670px;
+        position: relative;
+        margin:0 0.5em 0 0.5em;
+        display: inline-flex;
+        height:32px;
+        width:400px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        border-radius:5px;
+      }
+      .searchBox {
+        position: relative;
+        border: 0;
+        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+        flex: 1;
+      }
+      .active {
+        color:rgb(51, 132, 255);
+        border: solid 1px;
+        border-color:rgb(51, 132, 255);
+        margin:0 0.5em 0 0.5em;
+        text-decoration: none;
+        float:right;
+        border-radius: 30px;
+        background-color: white;
+        padding:7px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    
+
+    table, th, td{
+        border: 1px solid black;
+        border-radius: 5px; 
+        margin: auto; 
+        text-align: center;
+        width:50%;
+        
+    }
+.table{
+    padding-top:10em;
+}
+
+.add{
+   
+    padding: 10px 10px 10px 10px; 
+    margin: auto;
+    text-align: center;
+    display: flex;
+}

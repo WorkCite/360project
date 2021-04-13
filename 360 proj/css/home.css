@@ -105,13 +105,16 @@ body {
 .col:hover {
   border: solid grey 1px;
 }
+.group{
+  padding-left: 0.5em;
+}
 .popularposts {
   display: flex;
 }
 
 .left {
   width: 60%;
-  padding: 0 1em 0.5em 1em;
+  padding: 0 1em 0.5em 0;
 }
 
 .img {

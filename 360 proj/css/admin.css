@@ -1,47 +1,81 @@
 body{
-    background-color: rgb(240, 228, 228);
+    background-color: white;
     margin:0;
   }
   
-    .header{
-      border-top: solid lightgrey 1px;
-      background-color: white;
-      padding:0.5em;
-      position:relative;
-      height:auto;
-      display:inline-flexbox;
-    }
-    .search{
-        left:670px;
-        position: relative;
-        margin:0 0.5em 0 0.5em;
-        display: inline-flex;
-        height:32px;
-        width:400px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        overflow: hidden;
-        border-radius:5px;
-      }
-      .searchBox {
-        position: relative;
-        border: 0;
-        padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-        flex: 1;
-      }
-      .active {
-        color:rgb(51, 132, 255);
-        border: solid 1px;
-        border-color:rgb(51, 132, 255);
-        margin:0 0.5em 0 0.5em;
-        text-decoration: none;
-        float:right;
-        border-radius: 30px;
-        background-color: white;
-        padding:7px;
-        padding-left: 20px;
-        padding-right: 20px;
-      }
+  .header {
+    width:100%;
+    border-top: solid lightgrey 1px;
+    background-color: white;
+    padding: 0.5em;
+    position: fixed;
+    height: auto;
+    display: inline-block;
+  }
+  .home {
+    color: rgb(51, 132, 255);
+    margin: 0 0.5em 0 1em;
+    text-decoration: none;
+    float: left;
+    border-radius: 30px;
+    background-color: white;
+    border: solid 1px;
+    border-color: rgb(51, 132, 255);
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .active {
+    color: rgb(51, 132, 255);
+    border: solid 1px;
+    border-color: rgb(51, 132, 255);
+    margin: 0 0.5em 0 0.5em;
+    text-decoration: none;
+    float: right;
+    border-radius: 30px;
+    background-color: white;
+    margin-right: 2em;
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .signup {
+    color: white;
+    border: solid 1px;
+    border-color: rgb(51, 132, 255);
+    margin: 0 0.5em 0 0.5em;
+    text-decoration: none;
+    float: right;
+    border-radius: 30px;
+    background-color: rgb(51, 132, 255);
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .search {
+    margin: 0 0.5em 0 0.5em;
+    display: inline-flex;
+    height: 32px;
+    max-width: 400px;
+    width:400px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  
+  .searchBox {
+    border: 0;
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    flex: 1;
+  }
+  .searchIcon {
+    width: 20px;
+    height: 20px;
+    color: grey;
+    background-color: white;
+    padding: 0.5rem;
+  }
     
 
     table, th, td{

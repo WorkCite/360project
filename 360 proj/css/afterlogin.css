@@ -1,43 +1,149 @@
-body{
-    background-color: rgb(240, 228, 228);
-    margin:0;
-  }
+body {
+  background-color: white;
+  margin: 0;
+}
+
+.header {
+  width:100%;
+  border-top: solid lightgrey 1px;
+  background-color: white;
+  padding: 0.5em;
+  position: fixed;
+  height: auto;
+  display: inline-block;
+}
+.home {
+  color: rgb(51, 132, 255);
+  margin: 0 0.5em 0 1em;
+  text-decoration: none;
+  float: left;
+  border-radius: 30px;
+  background-color: white;
+  border: solid 1px;
+  border-color: rgb(51, 132, 255);
+  padding: 7px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.active {
+  color: rgb(51, 132, 255);
+  border: solid 1px;
+  border-color: rgb(51, 132, 255);
+  margin: 0 0.5em 0 0.5em;
+  text-decoration: none;
+  float: right;
+  border-radius: 30px;
+  background-color: white;
+  margin-right: 2em;
+  padding: 7px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.signup {
+  color: white;
+  border: solid 1px;
+  border-color: rgb(51, 132, 255);
+  margin: 0 0.5em 0 0.5em;
+  text-decoration: none;
+  float: right;
+  border-radius: 30px;
+  background-color: rgb(51, 132, 255);
+  padding: 7px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.search {
+  margin: 0 0.5em 0 0.5em;
+  display: inline-flex;
+  height: 32px;
+  max-width: 400px;
+  width:400px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.searchBox {
+  border: 0;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  flex: 1;
+}
+.searchIcon {
+  width: 20px;
+  height: 20px;
+  color: grey;
+  background-color: white;
+  padding: 0.5rem;
+}
+
+.sub-header {
+  font-size: 10px;
+  color: black;
+}
+
+.posts {
+  display: block;
+}
+.center {
+  padding: 10pt;
+  padding-left: 15%;
+  padding-right: 15%;
+  color: rgb(18, 145, 196);
+  background-color: rgb(240, 246, 248);
+  padding-top: 4em;
+}
+
+.col {
+  display: inline-block;
+  width: 10%;
+  background-color: #0f0;
+  border: solid lightgrey 1px;
+  border-radius: 10px;
+  padding: 0.5em;
+}
+.col:hover {
+  border: solid grey 1px;
+}
+.group{
+  padding-left: 0.5em;
+}
+.popularposts {
+  display: flex;
+}
+
+.left {
+  width: 60%;
+  padding: 0 1em 0.5em 0;
+}
+
+.img {
+  overflow-y: auto;
+  display: grid;
+  background-color: white;
+  margin: 0.5em;
+  border: solid lightgrey 1px;
+  border-radius: 10px;
+}
+.img:hover {
+  border: solid grey 1px;
+}
+.right {
+  width: 30%;
+  height: fit-content;
+  display: block;
+  background-color: white;
+  border: solid lightgrey 1px;
+  border-radius: 10px;
+  margin-top: 0.5em;
+  padding: 0.5em 1em 0.5em 1em;
+}
+footer {
+  padding: 10px 20px 10px 20px;
+  background-color: white;
+}
+
   
-    .header{
-      border-top: solid lightgrey 1px;
-      background-color: white;
-      padding:0.5em;
-      position:relative;
-      height:auto;
-      display:inline-flexbox;
-    }
-    .home{
-      color:rgb(51, 132, 255);
-      margin:0 0.5em 0 1em;
-      text-decoration: none;
-      float:left;
-      border-radius: 30px;
-      background-color: white;
-      border: solid 1px;
-      border-color:rgb(51, 132, 255);
-      padding:7px;
-      padding-left: 20px;
-      padding-right: 20px;
-  
-    }
-    .active {
-      color:rgb(51, 132, 255);
-      border: solid 1px;
-      border-color:rgb(51, 132, 255);
-      margin:0 0.5em 0 0.5em;
-      text-decoration: none;
-      float:right;
-      border-radius: 30px;
-      background-color: white;
-      padding:7px;
-      padding-left: 20px;
-      padding-right: 20px;
-    }
   
     .dropbtn {
     color:rgb(51, 132, 255);
@@ -85,93 +191,7 @@ body{
 .dropdown:hover .dropbtn {
   background-color: #c7cfc7;
 }
-  .search{
-    left:670px;
-    position: relative;
-    margin:0 0.5em 0 0.5em;
-    display: inline-flex;
-    height:32px;
-    width:400px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-    border-radius:5px;
-  }
+
   
-  .searchBox {
-    border: 0;
-    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
-    flex: 1;
-  }
-  .searchIcon {
-    width:20px;
-    height:20px;
-    color:grey;
-    background-color: white;
-    padding: 0.5rem;
-  }
-  
-  .sub-header{
-    font-size: 10px;
-    color:black;
-  }
-  
-  .posts{
-    display:block;
-  }
-    .center{
-      padding: 10pt;
-      padding-left: 15%;
-      padding-right:15%;
-      color:rgb(18, 145, 196);
-      background-color: rgb(240, 246, 248);
-    }
-  
-    .col {
-      display:inline-block;
-      width: 10%;
-      background-color: #0f0;
-      border:solid lightgrey 1px;
-      border-radius: 10px;  
-      padding:0.5em;
-    }
-    .col:hover{
-      border:solid grey 1px;
-    }
-    .popularposts{
-      display:flex;
-    }
-  
-    .left{
-      width:60%;
-      padding:0 1em 0.5em 1em;
-  
-    }
-  
-    .img{
-      overflow-y: auto;
-      display:grid;
-      background-color: white;
-      margin:0.5em;
-      border:solid lightgrey 1px;
-      border-radius: 10px;
-    }
-    .img:hover{
-      border:solid grey 1px;
-    }
-    .right{
-      width:30%;
-      height:fit-content;
-      display:block;
-      position: relative;
-      background-color:white ;
-      border:solid lightgrey 1px;
-      border-radius: 10px;
-      margin-top: 0.5em;
-      padding:0.5em 1em 0.5em 1em;
-    }
-  footer{
-    padding:10px 20px 10px 20px;
-    background-color: white;
-  }
+
     

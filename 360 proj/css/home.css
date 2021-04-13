@@ -7,7 +7,10 @@ body{
     border-top: solid lightgrey 1px;
     background-color: white;
     padding:0.5em;
-    position:relative;
+    position:absolute;
+    top:0;
+    left: 0;
+    width:100%;
     height:auto;
     display:inline-flexbox;
   }
@@ -86,7 +89,9 @@ body{
   display:block;
 }
   .center{
+
     padding: 10pt;
+    padding-bottom: 100px;
     padding-left: 15%;
     padding-right:15%;
     color:rgb(18, 145, 196);
@@ -137,6 +142,9 @@ body{
     padding:0.5em 1em 0.5em 1em;
   }
 footer{
+  bottom:0;
+
+  width:100%;
   padding:10px 20px 10px 20px;
   background-color: white;
 }

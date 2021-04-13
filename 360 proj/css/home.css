@@ -34,6 +34,7 @@ body {
   float: right;
   border-radius: 30px;
   background-color: white;
+  margin-right: 2em;
   padding: 7px;
   padding-left: 20px;
   padding-right: 20px;
@@ -52,11 +53,11 @@ body {
   padding-right: 20px;
 }
 .search {
-  position: relative;
   margin: 0 0.5em 0 0.5em;
   display: inline-flex;
   height: 32px;
-  width: 400px;
+  max-width: 400px;
+  width:400px;
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
@@ -90,6 +91,7 @@ body {
   padding-right: 15%;
   color: rgb(18, 145, 196);
   background-color: rgb(240, 246, 248);
+  padding-top: 4em;
 }
 
 .col {

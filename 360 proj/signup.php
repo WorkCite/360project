@@ -41,7 +41,6 @@
         mysqli_free_result($results2);
         mysqli_close($connection);
     }
-
-
 ?>
+
 </html>

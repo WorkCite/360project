@@ -48,9 +48,9 @@
                 <img class="searchIcon" src="./img/search_icon.png">
                 <input type="search" placeholder="Search" class="searchBox">
             </form>
-            <a class="active" href="login.html">Login/Signup</a>
+            <a class="active" href="login.php">Login/Signup</a>
             <a class="newpost">New Post</a>
-            <a class="home" href="home.html">Home</a>
+            <a class="home" href="home.php">Home</a>
         </div>
     </header>
 
@@ -200,7 +200,7 @@
 
     <footer>
         <div class="footer">
-            <p><a class="home" href="home.html">Home</a> 
+            <p><a class="home" href="home.php">Home</a> 
             </p>
         </div>
         <br/><br/>

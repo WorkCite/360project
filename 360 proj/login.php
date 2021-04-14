@@ -22,14 +22,14 @@
                     <a href="#" class="social"></a>
                 </div>
                 <span>Use Email</span>
-                <input type="text"  name="username" id="username">
-                <input type="email"  name="email" id="email">
-                <input type="password"  name="password" id="password">
+                <input type="text" placeholder="username" name="username" id="username">
+                <input type="email" placeholder="email" name="email" id="email">
+                <input type="password" placeholder="password" name="password" id="password">
                 <button onclick="form.submit()">Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form method="post" action="login.php" id="loginForm">
+            <form method="post" action="verifylogin.php" id="loginForm">
                 <h1>Login</h1>
                 <div class="social-container">
                     <a href="#" class="social"></a>
@@ -37,10 +37,10 @@
                     <a href="#" class="social"></a>
                 </div>
                 <span>Already have account?</span>
-                <input type="email" placeholder="email">
-                <input type="password" placeholder="password">
+                <input type="email" placeholder="email" name="email">
+                <input type="password" placeholder="password" name="password">
                 <a href="#">Forget Password?</a>
-                <button>Login</button>
+                <button onclick="form.submit()">Login</button>
             </form>
         </div>
         <div class="overlay-container">

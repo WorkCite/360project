@@ -7,8 +7,6 @@ body {
   width:100%;
   border-top: solid lightgrey 1px;
   background-color: white;
-  left:0;
-  top:0;
   padding: 0.5em;
   position: fixed;
   height: auto;
@@ -224,7 +222,7 @@ max-width: fit-content;
 }
 footer {
   padding: 10px 20px 10px 20px;
-  width:100%;
+
   background-color: white;
 }
 /* modal */
@@ -293,6 +291,7 @@ footer {
 .formheader{
   margin:0 0.5em 0.5em 0.5em;
   display:block;
+  float:right;
 }
 .formlayout{
   margin:3em;
@@ -324,6 +323,47 @@ display:block;
 }
 .inputContent:focus{
   outline: none;
+}
+.formButton{
+  display:block;
+}
+#fileToUpload{
+  padding-top: 1em;
+  display:none;
+}
+.fileToUpload{
+  vertical-align: top;
+  background-color: white;
+  border-radius: 10pt;
+  border:none;
+  outline:none;
+  margin-top: 2pt;
+  margin-left: 0.5em;
+}
+.fileToUpload:hover{
+  cursor: pointer;
+  background-color: rgb(241, 241, 241);
+}
+.fileToUpload:active{
+  background-color: rgb(228, 228, 228);
+}
+.postButton{
+  vertical-align: top;
+  background-color: rgb(51, 132, 255);
+  border-color:rgb(51, 132, 255);
+  border-radius: 10pt;
+  width:80px;
+  height:40px;
+  font-size: 12pt;
+  color:white;
+  display:block;
+  margin:0 0em 3em 3em;
+  display:inline-block;
+}
+.postButton:hover{
+  cursor: pointer;
+  background-color: rgb(75, 146, 253);
+  border-color:rgb(75, 146, 253);
 }
 .closeform {
   display:inline-block;

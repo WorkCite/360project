@@ -74,7 +74,6 @@ if($_SESSION['isLogin']!=null){
                             <a href='login.php'>Logout</a>
                         </div>
                     </div>";
-                    echo "<a class='active' href='login.php'>Logout</a>";
                 }
                 else{
                     echo "<script>console.log('1username not get');</script>";

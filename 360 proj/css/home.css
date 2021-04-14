@@ -379,7 +379,7 @@ display:block;
 }
 
 .btn{
-  color: rgb(44, 146, 230);
+  color: black;
   margin: 0 0.5em 0 1em;
   text-decoration: none;
   border-radius: 10px;
@@ -392,5 +392,5 @@ display:block;
 }
 
 .btn:hover{
-  background-color: antiquewhite;
+  background-color:rgb(241, 241, 241);
 }

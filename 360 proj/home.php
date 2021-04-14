@@ -22,17 +22,17 @@
 </div>
 
 <!-- newpost form -->
-<form class="newpost-form">
+<form class="newpost-form" method="post" action="newpost.php">
     <div class="mainform">
         <div class="formheader">
             <span class="closeform">&times;</span>
         </div>
         <div class="formlayout">
-            <div class="titleBlock">
+<!--             <div class="titleBlock">
                 <label class="title">Title</label>
                 <input class="inputTitle" type="text"></br>
-            </div>
-            <textarea class="inputContent" placeholder="type your content"></textarea>
+            </div> -->
+            <textarea class="inputContent" placeholder="type your content" name="inputContent"></textarea>
         </div>
             <div class="formButton">
                 <input type="submit" value="Post" class="postButton">

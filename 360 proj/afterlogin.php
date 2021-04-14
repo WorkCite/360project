@@ -22,8 +22,8 @@
                 </div>
                 </div>
                 
-        <a class="newpost" href="newpost.html">New Post</a>
-        <a class="home" href="home.html">Home</a>
+        <a class="newpost" href="newpost.php">New Post</a>
+        <a class="home" href="home.php">Home</a>
     </div>
     </header>
     <div class="center">
@@ -64,7 +64,7 @@
     </div>
     <footer>
         <div class="sub-footer">
-            <p><a href="home.html">Home</a> |
+            <p><a href="home.php">Home</a> |
                 <a href="#">Search</a>
             </p>
         </div>

@@ -60,7 +60,7 @@
     </div>
     <footer>
         <div class="footer">
-            <p><a href="home.html">Home</a> |
+            <p><a href="home.php">Home</a> |
                 <a href="#">Search</a>
             </p>
         </div>

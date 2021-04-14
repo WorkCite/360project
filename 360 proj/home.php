@@ -34,9 +34,10 @@
             </div>
             <textarea class="inputContent" placeholder="type your content"></textarea>
         </div>
-            <div>
+            <div class="formButton">
+                <input type="submit" value="Post" class="postButton">
+                <button class="fileToUpload"for="fileToUpload"><img width="30pt" height="30pt"src="img/attachmentIcon3.png"></button>
                 <input type="file" name="fileToUpload" id="fileToUpload">
-                <input type="submit" value="Submit" name="submit">
             </div>
     </div>
 </form>
@@ -199,11 +200,6 @@
     </div>
 
     <footer>
-        <div class="footer">
-            <p><a class="home" href="home.php">Home</a> 
-            </p>
-        </div>
-        <br/><br/>
         <div class="copyright">
             <p>Copyright © WorkCite Github student group</p>
         </div>

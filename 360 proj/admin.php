@@ -15,8 +15,8 @@
                 <input type="search" placeholder="Search" class="searchBox">
             </form>
         
-        <a class="active" href="login.html">Admin</a>
-        <a class="home" href="home.html">Home</a>
+        <a class="active" href="login.php">Admin</a>
+        <a class="home" href="home.php">Home</a>
     </div>
     </header>
     

@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php 
+session_start();
+if($_SESSION==null){
+$_SESSION['isLogin']=null;
+$_SESSION['isAdmin']=null;
+}
+else if($_SESSION!=null){
+    echo "<script>console.log('session not null');</script>";}
+if($_SESSION['isLogin']!=null){
+    $username = $_SESSION['username'];
+    echo "<script>console.log('login');</script>";
+    echo "<script>console.log('$username'+'0');</script>";
+}
+?>
 <head>
     <link rel="stylesheet" href="./css/home.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -49,7 +62,18 @@
                 <img class="searchIcon" src="./img/search_icon.png">
                 <input type="search" placeholder="Search" class="searchBox">
             </form>
-            <a class="active" href="login.php">Login/Signup</a>
+            <?php 
+                if(isset($username)){
+                    echo "<script>console.log($username);</script>";
+                    echo "<a class='active' href='profile.php'>Welcome, $username!</a>";
+                    echo "<a class='active' href='login.php'>Logout</a>";
+                }
+                else{
+                    echo "<script>console.log('1username not get');</script>";
+                    echo "<a class='active' href='login.php'>Login/Signup</a>";
+                }
+            ?>
+
             <a class="newpost">New Post</a>
             <a class="home" href="home.php">Home</a>
         </div>

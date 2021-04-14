@@ -65,7 +65,15 @@ if($_SESSION['isLogin']!=null){
             <?php 
                 if(isset($username)){
                     echo "<script>console.log($username);</script>";
-                    echo "<a class='active' href='profile.php'>Welcome, $username!</a>";
+                    echo "
+                    <div class='dropdown'>
+                        <button class='username' name='username'>Welcome, $username!</button>
+                        <div class='dropdown-content'>
+                            <a href='profile.php'>Profile</a>
+                            <a href='#'>Posts</a>
+                            <a href='login.php'>Logout</a>
+                        </div>
+                    </div>";
                     echo "<a class='active' href='login.php'>Logout</a>";
                 }
                 else{

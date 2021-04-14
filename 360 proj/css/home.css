@@ -394,3 +394,53 @@ display:block;
 .btn:hover{
   background-color:rgb(241, 241, 241);
 }
+.username {
+  background-color: white;
+  color: rgb(51, 132, 255);
+  margin: 0 0.5em 0 0.5em;
+  padding: 7px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 16px;
+  float:right;
+  border: solid 1px;
+  border-color: rgb(51, 132, 255);
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  margin-right: 2em;
+}
+
+.dropdown {
+  float: right;
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  top:26pt;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #cfcfcf;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .username {
+  background-color: #b6b6b6;
+}

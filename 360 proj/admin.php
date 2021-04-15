@@ -2,12 +2,17 @@
 <html lang="en">
     <head>
         <link rel="stylesheet" href="./css/admin.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <script language="JavaScript" type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="js/admin.js"></script>
         <title>Admin control</title>
     </head>
 
 <body>
     
-    <header>
+    <!--<header>
 
         <div class="header">
             <form class="search">
@@ -15,29 +20,60 @@
                 <input type="search" placeholder="Search" class="searchBox">
             </form>
         
-        <a class="active" href="login.php">Admin</a>
-        <a class="home" href="home.php">Home</a>
+        
+    </div>-->
+    </header> 
+    <div class="adduser">
+    <form method="post" action="signup.php">
+        <input   type="text" placeholder="username" name="username" id="username">
+        <input   type="email" placeholder="email" name="email" id="email">
+        <input   type="password" placeholder="password" name="password" id="password">
+        
+        <button  onclick="form.submit()">Add User</button>
+    </form>
     </div>
-    </header>
+
+    <?php
+    $host = "localhost";
+    $database = "360project";
+    $user = "webuser";
+    $password0 = "P@ssw0rd";
+    $connection = mysqli_connect($host, $user, $password0, $database);
+    $error = mysqli_connect_error();
+    if($error != null)
+    {
+    $output = "<p>Unable to connect to database!</p>";
+    exit($output);
+    }
+    else
+    {
+        //good connection, so do you thing
+        
+        $sql = "select username from users;";
+        $results = mysqli_query($connection, $sql);
+        //and fetch requsults
+        echo  "<div class='table'>";
+        echo "<table>";
+        echo "<tr><th>User</th><th>Number of Posts</th><th>Delete User</th></tr>";
+        
+        while($row = mysqli_fetch_assoc($results)){
+            foreach($row as $e){
+               
+                echo "<tr><td> " .$e. "</td><td> 0 </td><td><button id='userna'> &#10003; </button></td></tr>";
+               
+           }    
+        }
+        echo "</table>";
+        echo "</div>";
+
+        echo "<br/>";
+        echo "<button class='add'>Add User</button>";
+        mysqli_close($connection);
+    }
+
+
+    ?>
     
-    <div class="table">
-    <table>
-        <tr><th>User</th><th>Number of Posts</th><th>Delete User</th></tr>
-        <tr><td>User1</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User2</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User3</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User4</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User5</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User6</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User7</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User8</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User9</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User10</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User11</td><td>3</td><td><button>&#10003</button></td></tr>
-        <tr><td>User12</td><td>3</td><td><button>&#10003</button></td></tr>
-    </table></div>
-    <br/>
-    <button class="add">Add User</button>
 </body>
 
 </html>

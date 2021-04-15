@@ -1,6 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php 
+session_start();
+if($_SESSION==null){
+$_SESSION['isLogin']=null;
+$_SESSION['isAdmin']=null;
+}
+else if($_SESSION!=null){
+    echo "<script>console.log('session not null');</script>";}
+if($_SESSION['isLogin']!=null){
+    $username = $_SESSION['username'];
+    //$email = $_SESSION['email'];
+    echo "<script>console.log('login');</script>";
+    echo "<script>console.log('$username'+'0' );</script>";
+}
+?>
+<?php 
+$uname = null;
+$email = null;
+$host = "localhost";
+$database = "360project";
+$user = "webuser";
+$password0 = "P@ssw0rd";
+$connection = mysqli_connect($host, $user, $password0, $database);
+$error = mysqli_connect_error();
+if($error != null)
+    {
+    $output = "<p>Unable to connect to database!</p>";
+    exit($output);
+    }
+    else
+    {
+        //good connection, so do you thing
+        $sql = "select username, email from users where username = '$username';";
+        $results = mysqli_query($connection, $sql);
+        //and fetch requsults
+        $row = mysqli_fetch_assoc($results);
+        if($row !=null){
+            $uname = $row['username'];
+            $email = $row['email'];
+        }
+        
+        mysqli_close($connection);
+        
+    }
+?>
 <head>
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/profile.css">
@@ -8,14 +52,30 @@
 </head>
 
 <body>
-    <header>
+<header>
         <div class="header">
             <form class="search">
                 <img class="searchIcon" src="./img/search_icon.png">
                 <input type="search" placeholder="Search" class="searchBox">
             </form>
-            <a class="active" href="login.php">Login/Signup</a>
-            <a class="newpost">New Post</a>
+            <?php 
+                if(isset($username)){
+                    echo "<script>console.log($username);</script>";
+                    echo "
+                    <div class='dropdown'>
+                        <button class='username' name='username'>Welcome, $username!</button>
+                        <div class='dropdown-content'>
+                            <a href='profile.php'>Profile</a>
+                            <a href='#'>Posts</a>
+                            <a href='login.php'>Logout</a>
+                        </div>
+                    </div>";
+                }
+                else{
+                    echo "<script>console.log('1username not get');</script>";
+                    echo "<a class='active' href='login.php'>Login/Signup</a>";
+                }
+            ?>
             <a class="home" href="home.php">Home</a>
         </div>
     </header>
@@ -24,8 +84,16 @@
                 <img class="i1-img" src="./img/user1.png">
             </div>
             <div class="item2">
-                <h1>Name</h1>
-                <p>City</p>
+            <?php 
+                if(isset($username)){
+                    echo "<script>console.log($uname);</script>";
+                    echo "<script>console.log($email);</script>";
+                    echo "
+                    <h1>$username</h1>
+                    <p>$email</p>
+                    ";
+                }
+            ?>
             </div>
             <div class="item0"> 
             </div>

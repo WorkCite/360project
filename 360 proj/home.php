@@ -87,8 +87,8 @@ if ($_SESSION['isLogin'] != null) {
 <?php
 /* ini_set("display_errors","On");
 error_reporting(E_ALL); */
+$posted = false;
 if (isset($_POST['submit'])) {
-    $posted = false;
     $host = "localhost";
     $database = "360project";
     $user = "webuser";
@@ -129,15 +129,13 @@ if (isset($_POST['submit'])) {
 
         $sql = "INSERT INTO post(postid,content,img,date,username) VALUES (0,'$content','$img','$date','$username');";
         $result = mysqli_query($connection, $sql);
-        echo "111";
         if ($result) {
             echo 'Posted successfully!';
-            mysqli_free_result($result);
             $posted = true;
         } else {
             echo 'Posted unsuccessfully!';
-            mysqli_free_result($result);
         }
+        mysqli_free_result($result);
         mysqli_close($connection);
     }
 }

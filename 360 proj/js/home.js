@@ -26,25 +26,29 @@ $(function () {
       });
       p.append(content);
       p.append(str2.clone());
-      modal.fadeIn(1000);
+      modal.fadeIn(500);
     }
   });
 
   span.on("click", function () {
-    modal.fadeOut(1000);
+    modal.fadeOut(500);
 /*     $('.openComment').remove();
  */    $('.commentForm').remove();
     $(".paragraph").find("p").remove();
     $(".paragraph").find("img").remove(); 
+    $(".openComment").css('display','block');
+
   });
 
   $(window).on("click", function (event) {
     if ($(event.target).is(modal)) {
-      modal.fadeOut(1000);
+      modal.fadeOut(500);
 /*     $('.openComment').remove();
  */    $('.commentForm').remove();
     $(".paragraph").find("p").remove();
     $(".paragraph").find("img").remove(); 
+    $(".openComment").css('display','block');
+
     }
   });
   /* newpost */
@@ -57,20 +61,21 @@ $(function () {
     close.css("display", "none");
   });
   $(".newpost").on("click", function () {
-    form.fadeIn(1000);
+    form.fadeIn(500);
   });
   span2.on("click", function () {
-    form.fadeOut(1000);
+    form.fadeOut(500);
     $(".uploadedImage").attr("src", "");
     close.css("display", "none");
     $(".uploadedImage").css("display", "none");
   });
   $(window).on("click", function (event) {
     if ($(event.target).is(form)) {
-      form.fadeOut(1000);
+      form.fadeOut(500);
       $(".uploadedImage").attr("src", "");
       close.css("display", "none");
       $(".uploadedImage").css("display", "none");
+      
     }
   });
 
@@ -83,7 +88,6 @@ $(function () {
     ).css('display','block');
     var form =$('<form class="commentForm"></form').appendTo(div);
     var ta =$('<textarea style="width:200pt; height:50pt; outline:none;" name="commentInput" placeholder="Add description" oninvalid="this.setCustomValidity(\'Enter your description\')" oninput="this.setCustomValidity(\'\')" required></textarea>')
-      .focus(function(){ this.css('outline','none')})
       .appendTo(form)
       .css({
       resize:'unset',

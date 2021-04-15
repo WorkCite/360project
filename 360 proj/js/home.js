@@ -26,21 +26,29 @@ $(function () {
       });
       p.append(content);
       p.append(str2.clone());
-      modal.fadeIn(1000);
+      modal.fadeIn(500);
     }
   });
 
   span.on("click", function () {
-    modal.fadeOut(1000);
+    modal.fadeOut(500);
+/*     $('.openComment').remove();
+ */    $('.commentForm').remove();
     $(".paragraph").find("p").remove();
-    $(".paragraph").find("img").remove();
+    $(".paragraph").find("img").remove(); 
+    $(".openComment").css('display','block');
+
   });
 
   $(window).on("click", function (event) {
     if ($(event.target).is(modal)) {
-      modal.fadeOut(1000);
-      $(".paragraph").find("p").remove();
-      $(".paragraph").find("img").remove();
+      modal.fadeOut(500);
+/*     $('.openComment').remove();
+ */    $('.commentForm').remove();
+    $(".paragraph").find("p").remove();
+    $(".paragraph").find("img").remove(); 
+    $(".openComment").css('display','block');
+
     }
   });
   /* newpost */
@@ -48,29 +56,51 @@ $(function () {
   var form = $(".newpost-form");
   var span2 = $(".closeform");
   close.on("click", function () {
-
-    $(".uploadedImage").attr('src',"");  
-    $(".uploadedImage").css('display','none');
-    close.css('display','none');
+    $(".uploadedImage").attr("src", "");
+    $(".uploadedImage").css("display", "none");
+    close.css("display", "none");
   });
   $(".newpost").on("click", function () {
-    form.fadeIn(1000);
+    form.fadeIn(500);
   });
   span2.on("click", function () {
-    form.fadeOut(1000);
-    $(".uploadedImage").attr('src',"");  
-    close.css('display','none');
-    $(".uploadedImage").css('display','none');
-
-
+    form.fadeOut(500);
+    $(".uploadedImage").attr("src", "");
+    close.css("display", "none");
+    $(".uploadedImage").css("display", "none");
   });
   $(window).on("click", function (event) {
     if ($(event.target).is(form)) {
-      form.fadeOut(1000);
-      $(".uploadedImage").attr('src',"");  
-      close.css('display','none');
-      $(".uploadedImage").css('display','none');
-
+      form.fadeOut(500);
+      $(".uploadedImage").attr("src", "");
+      close.css("display", "none");
+      $(".uploadedImage").css("display", "none");
+      
     }
   });
+
+  $(".openComment").on("click", function () {
+    $(".openComment").css('display','none');
+/*     <form class="commentForm"><textarea name="commentInput" placeholder="Add description" oninvalid="this.setCustomValidity(\'Enter your description\')" oninput="this.setCustomValidity(\'\')" required></textarea><button type="submit" name="innerSubmit">Submit</button></form>
+ */    
+    var div = $(
+      '<div class="innerBlock"></div>'
+    ).css('display','block');
+    var form =$('<form class="commentForm"></form').appendTo(div);
+    var ta =$('<textarea style="width:200pt; height:50pt; outline:none;" name="commentInput" placeholder="Add description" oninvalid="this.setCustomValidity(\'Enter your description\')" oninput="this.setCustomValidity(\'\')" required></textarea>')
+      .appendTo(form)
+      .css({
+      resize:'unset',
+      border: 'none',
+      minwidth: '50pt',
+      minheight:'50pt',
+      margin:'1em 0 1em 0',
+    });
+    var btn =$('<button type="submit" name="innerSubmit">Submit</button>')
+      .appendTo(form);
+    var inner = $(".innerComment");
+    inner.append(div);
+  });
+
+
 });

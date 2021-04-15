@@ -13,6 +13,8 @@ if($_SESSION['isLogin']!=null){
     echo "<script>console.log('login');</script>";
     echo "<script>console.log('$username'+'0');</script>";
 }
+
+
 ?>
 <head>
     <link rel="stylesheet" href="./css/home.css">
@@ -53,7 +55,7 @@ if($_SESSION['isLogin']!=null){
 </div>
 
 <!-- newpost form -->
-<form class="newpost-form" method="POST" action="newpost.php">
+<form class="newpost-form" method="POST" action="" enctype="multipart/form-data">
     <div class="mainform">
         <div class="formheader">
             <span class="closeform">&times;</span>
@@ -76,6 +78,57 @@ if($_SESSION['isLogin']!=null){
         </div>
     </div>
 </form>
+<?php
+$host = "localhost";
+$database = "360project";
+$user = "webuser";
+$password = "P@ssw0rd";
+
+$connection = mysqli_connect($host, $user, $password, $database);
+
+$error = mysqli_connect_error();
+if($error != null)
+{
+  $output = "<p>Unable to connect to database!</p>";
+  die($error);
+}else{
+//  content
+if(isset($_POST['inputContent'])){
+  $content = $_POST['inputContent'];
+}
+// date
+date_default_timezone_set('America/Los_Angeles');
+$date = date('Y-m-d h:i:s a');
+
+// img
+if(isset($_POST['fileToUpload'])){
+  $img = $_POST['fileToUpload'];
+}
+
+
+// username
+if(isset($_POST['username'])){
+  $username = $_POST['username'];
+}else{
+  $username = 'test';
+}
+
+$sql="INSERT INTO post(postid,content,img,date,username) VALUES (0,'$content','$img','$date','$username');";
+$result = mysqli_query($connection, $sql);
+
+if($result){
+  echo 'Posted successfully!';
+  mysqli_free_result($result);
+
+}else{
+  echo 'Posted unsuccessfully!';
+  mysqli_free_result($result);
+
+}
+mysqli_close($connection);
+
+}
+?>
 
 <body>
     <header>

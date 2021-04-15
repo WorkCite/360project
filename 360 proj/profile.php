@@ -22,8 +22,12 @@ $host = "localhost";
 $database = "360project";
 $user = "webuser";
 $password0 = "P@ssw0rd";
+$numimg = null;
+$numpost = null;
+$postimg = array();
 $connection = mysqli_connect($host, $user, $password0, $database);
 $error = mysqli_connect_error();
+$tname = "test";
 if($error != null)
     {
     $output = "<p>Unable to connect to database!</p>";
@@ -36,11 +40,46 @@ if($error != null)
         $results = mysqli_query($connection, $sql);
         //and fetch requsults
         $row = mysqli_fetch_assoc($results);
-        if($row !=null){
+        if($row != null){
             $uname = $row['username'];
             $email = $row['email'];
         }
-        
+       /* $sql1 = "select img from post where username = '$tname' ;";
+        $results1 = mysqli_query($connection, $sql1);
+        $row1 = mysqli_fetch_assoc($results1);
+        if($row1 != null){
+            for ($i=0; $i<sizeof($row1); $i++)
+                {
+                    echo "<script>console.log('$i');</script>";
+                        array_push($postimg,$row1[$i]);
+                        $numimg+=1;
+                        echo "<script>console.log('$numimg');</script>";
+                        echo "<script>console.log(".$row1[$i].");</script>";
+                    
+                }
+        }*/
+        $sql2 = "select postid from post;";
+        $results2 = mysqli_query($connection, $sql2);
+        //and fetch requsults
+        $row2 = mysqli_fetch_assoc($results2);
+        if($row2 != null){
+           $numpost = count($row2);
+            $temp = $row2['postid'];
+           echo "<script>console.log('co: '+$temp);</script>";
+           //echo "<script>console.log($row2['postid']);</script>";
+           //echo "<script>console.log($row2['postid']);</script>";
+        }
+        $sql3 = "select img from post;";
+        $results3 = mysqli_query($connection, $sql3);
+        //and fetch requsults
+        $row3 = mysqli_fetch_assoc($results3);
+        if($row3 != null){
+            $numimg = count($row3);
+            $temp = $row2['postid'];
+           echo "<script>console.log('co: '+$temp);</script>";
+           //echo "<script>console.log($row2['postid']);</script>";
+           //echo "<script>console.log($row2['postid']);</script>";
+        }
         mysqli_close($connection);
         
     }
@@ -103,11 +142,15 @@ if($error != null)
             <div class="item3-5">
             </div>
             <div class="item4">
-                <h3>Number</h3>
+            <?php 
+                echo "<h3>".$numimg."</h3>";
+            ?>
                 <p>Photos</p>
             </div>
             <div class="item5">
-                <h3>Number</h3>
+            <?php 
+                echo "<h3>".$numpost."</h3>";
+            ?>
                 <p>Posts</p>
             </div>
             <div class="item6">
@@ -119,15 +162,20 @@ if($error != null)
             <div class="item7">
                 <h2 style="margin-left: 10%;">Recent Photo</h2>
                 <div class="i7-content">
-                    <img src="./img/1.gif">
-                    <img src="./img/1.gif">
-                    <img src="./img/1.gif">
-                    <img src="./img/1.gif">
+                    <img class="postimg" src="./img/1.gif">
+                    <img class="postimg" src="./img/1.gif">
+                    <img class="postimg" src="./img/1.gif">
+                    <img class="postimg" src="./img/1.gif">
+                    <?php 
+                   /* if($postimg != null){
+                        for ($i=0; $i<sizeof($postimg); $i++)
+                            {
+                                if($postimg[$i] != null)
+                                echo "<img class='postimg' src=".$postimg[i].">;";
+                            }
+                    }*/
+                    ?>
                 </div>
-            </div>
-            <div class="item8">
-                <h2 style="margin-left: 10%;">Post</h2>
-
             </div>
     </container>
     <footer>

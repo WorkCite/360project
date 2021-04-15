@@ -108,8 +108,7 @@
   margin-left: 5%;
   margin-right: 5%;
 }
-.item8{
-  grid-column: span 8;
-	grid-row: span 2;
-  color: black;
+.postimg{
+  max-width: 270px;
+  max-height: 196px;
 }

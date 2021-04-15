@@ -22,7 +22,25 @@ if($_SESSION['isLogin']!=null){
     <script language="JavaScript" type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
     <script type="text/javascript" src="js/home2.js"></script>
+    <script language="javascript" type="text/javascript">
+        function readURL(input) {
+                var close = $('.closeImage');
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
+                reader.onload = function(e) {
+                    $('.uploadedImage')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200)
+                        .css('display','unset'); 
+                    close.css('display','inline-block');
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
     <title>My Discussion Forum Website</title>
 </head>
 <!-- block modal -->
@@ -35,23 +53,27 @@ if($_SESSION['isLogin']!=null){
 </div>
 
 <!-- newpost form -->
-<form class="newpost-form" method="post" action="newpost.php">
+<form class="newpost-form" method="POST" action="newpost.php">
     <div class="mainform">
         <div class="formheader">
             <span class="closeform">&times;</span>
         </div>
         <div class="formlayout">
-<!--             <div class="titleBlock">
+            <!--             <div class="titleBlock">
                 <label class="title">Title</label>
                 <input class="inputTitle" type="text"></br>
             </div> -->
-            <textarea class="inputContent" placeholder="type your content" name="inputContent"></textarea>
+                <textarea placeHolder="type your content"class="inputContent" name="inputContent"></textarea>
+                <div class="uploadedImageBlock">
+                    <span class="closeImage">&times;</span>
+                   <img class="uploadedImage" name="uploadedImage">
+                </div>
         </div>
-            <div class="formButton">
-                <input type="submit" value="Post" class="postButton">
-                <button class="fileToUpload"for="fileToUpload"><img width="30pt" height="30pt"src="img/attachmentIcon3.png"></button>
-                <input type="file" name="fileToUpload" id="fileToUpload">
-            </div>
+        <div class="formButton">
+            <input type="submit" class="postButton">
+            <label class="fileToUpload" for="fileToUpload"><img width="30pt" height="30pt" src="img/attachmentIcon3.png"></label>
+            <input onChange="readURL(this);" type="file" accept=".JPEG,.PNG,.GIF,.TIFF,.PDF" name="fileToUpload" id="fileToUpload">
+        </div>
     </div>
 </form>
 
@@ -65,23 +87,22 @@ if($_SESSION['isLogin']!=null){
             <?php 
                 if(isset($username)){
                     echo "<script>console.log($username);</script>";
-                    echo "
-                    <div class='dropdown'>
+                    echo "            
+                        <div class='dropdown'>
                         <button class='username' name='username'>Welcome, $username!</button>
                         <div class='dropdown-content'>
                             <a href='profile.php'>Profile</a>
                             <a href='#'>Posts</a>
                             <a href='login.php'>Logout</a>
                         </div>
-                    </div>";
+                    </div>
+                    <a class='newpost'>New Post</a>";
                 }
                 else{
                     echo "<script>console.log('1username not get');</script>";
                     echo "<a class='active' href='login.php'>Login/Signup</a>";
                 }
             ?>
-
-            <a class="newpost">New Post</a>
             <a class="home" href="home.php">Home</a>
         </div>
     </header>
@@ -98,7 +119,7 @@ if($_SESSION['isLogin']!=null){
             </div>
         </div>
         <div class="sub-header">
-            <h1>Popular Posts</h1>
+            <h1>Posts</h1>
         </div>
         <div id="myBtnContainer">
             <button class="btn " onclick="filterSelection('all')"> Show all</button>

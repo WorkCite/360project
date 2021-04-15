@@ -310,6 +310,7 @@ footer {
   outline: none !important;
 }
 .inputContent {
+  resize:unset;
   border: none;
   margin-top: 1em;
   width: 100%;
@@ -322,7 +323,23 @@ footer {
 .inputContent:focus {
   outline: none;
 }
-
+.openComment{
+  text-align: center;
+  margin:1em 0 0 0;
+  background-color: rgb(51, 132, 255);
+  border-color: rgb(51, 132, 255);
+  border-radius: 10pt;
+  width: 90px;
+  height: 30px;
+  font-size: 12pt;
+  color: white;
+  display: block;
+}
+.openComment:hover {
+  cursor: pointer;
+  background-color: rgb(75, 146, 253);
+  border-color: rgb(75, 146, 253);
+}
 .formButton {
 
   display: block;

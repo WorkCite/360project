@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php 
+<?php
 session_start();
-if($_SESSION==null){
-$_SESSION['isLogin']=null;
-$_SESSION['isAdmin']=null;
+if ($_SESSION == null) {
+    $_SESSION['isLogin'] = null;
+    $_SESSION['isAdmin'] = null;
+} else if ($_SESSION != null) {
+    echo "<script>console.log('session not null');</script>";
 }
-else if($_SESSION!=null){
-    echo "<script>console.log('session not null');</script>";}
-if($_SESSION['isLogin']!=null){
+if ($_SESSION['isLogin'] != null) {
     $username = $_SESSION['username'];
     echo "<script>console.log('login');</script>";
     echo "<script>console.log('$username'+'0');</script>";
@@ -16,6 +16,7 @@ if($_SESSION['isLogin']!=null){
 
 
 ?>
+
 <head>
     <link rel="stylesheet" href="./css/home.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -26,7 +27,7 @@ if($_SESSION['isLogin']!=null){
     <script type="text/javascript" src="js/home2.js"></script>
     <script language="javascript" type="text/javascript">
         function readURL(input) {
-                var close = $('.closeImage');
+            var close = $('.closeImage');
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
@@ -35,8 +36,8 @@ if($_SESSION['isLogin']!=null){
                         .attr('src', e.target.result)
                         .width(150)
                         .height(200)
-                        .css('display','unset'); 
-                    close.css('display','inline-block');
+                        .css('display', 'unset');
+                    close.css('display', 'inline-block');
                 };
 
                 reader.readAsDataURL(input.files[0]);
@@ -65,69 +66,75 @@ if($_SESSION['isLogin']!=null){
                 <label class="title">Title</label>
                 <input class="inputTitle" type="text"></br>
             </div> -->
-                <textarea placeHolder="type your content"class="inputContent" name="inputContent"></textarea>
-                <div class="uploadedImageBlock">
-                    <span class="closeImage">&times;</span>
-                   <img class="uploadedImage" name="uploadedImage">
-                </div>
+            <textarea placeHolder="type your content" class="inputContent" name="inputContent"></textarea>
+            <div class="uploadedImageBlock">
+                <span class="closeImage">&times;</span>
+                <img class="uploadedImage" name="uploadedImage">
+            </div>
         </div>
         <div class="formButton">
-            <input type="submit" class="postButton">
+            <input type="submit" class="postButton" name="submit">
             <label class="fileToUpload" for="fileToUpload"><img width="30pt" height="30pt" src="img/attachmentIcon3.png"></label>
             <input onChange="readURL(this);" type="file" accept=".JPEG,.PNG,.GIF,.TIFF,.PDF" name="fileToUpload" id="fileToUpload">
         </div>
     </div>
 </form>
+
 <?php
-$host = "localhost";
-$database = "360project";
-$user = "webuser";
-$password = "P@ssw0rd";
+if (isset($_POST['submit'])) {
 
-$connection = mysqli_connect($host, $user, $password, $database);
+    $host = "localhost";
+    $database = "360project";
+    $user = "webuser";
+    $password = "P@ssw0rd";
 
-$error = mysqli_connect_error();
-if($error != null)
-{
-  $output = "<p>Unable to connect to database!</p>";
-  die($error);
-}else{
-//  content
-if(isset($_POST['inputContent'])){
-  $content = $_POST['inputContent'];
+    $connection = mysqli_connect($host, $user, $password, $database);
+
+    $error = mysqli_connect_error();
+    if ($error != null) {
+        $output = "<p>Unable to connect to database!</p>";
+        die($error);
+    } else {
+
+        //  content
+        if (isset($_POST['inputContent'])) {
+            $content = $_POST['inputContent'];
+        }
+
+        // date
+        date_default_timezone_set('America/Los_Angeles');
+        $date = date('Y-m-d h:i:s a');
+
+        // img
+        if (isset($_POST['submit'])) {
+            $form_data = $_FILES['fileToUpload']['tmp_name'];
+            // img binary data
+            $img = addslashes(fread(fopen($form_data, "r"), filesize($form_data)));
+        }else{
+            $img = null;
+        }
+
+        // username
+        if (isset($_POST['username'])) {
+            $username = $_POST['username'];
+        } else {
+            $username = 'test';
+        }
+
+        $sql = "INSERT INTO post(postid,content,img,date,username) VALUES (0,'$content','$img','$date','$username');";
+        $result = mysqli_query($connection, $sql);
+        echo "111";
+        if ($result) {
+            echo 'Posted successfully!';
+            mysqli_free_result($result);
+        } else {
+            echo 'Posted unsuccessfully!';
+            mysqli_free_result($result);
+        }
+        mysqli_close($connection);
+    }
 }
-// date
-date_default_timezone_set('America/Los_Angeles');
-$date = date('Y-m-d h:i:s a');
 
-// img
-if(isset($_POST['fileToUpload'])){
-  $img = $_POST['fileToUpload'];
-}
-
-
-// username
-if(isset($_POST['username'])){
-  $username = $_POST['username'];
-}else{
-  $username = 'test';
-}
-
-$sql="INSERT INTO post(postid,content,img,date,username) VALUES (0,'$content','$img','$date','$username');";
-$result = mysqli_query($connection, $sql);
-
-if($result){
-  echo 'Posted successfully!';
-  mysqli_free_result($result);
-
-}else{
-  echo 'Posted unsuccessfully!';
-  mysqli_free_result($result);
-
-}
-mysqli_close($connection);
-
-}
 ?>
 
 <body>
@@ -137,10 +144,10 @@ mysqli_close($connection);
                 <img class="searchIcon" src="./img/search_icon.png">
                 <input type="search" placeholder="Search" class="searchBox">
             </form>
-            <?php 
-                if(isset($username)){
-                    echo "<script>console.log($username);</script>";
-                    echo "            
+            <?php
+            if (isset($username)) {
+                echo "<script>console.log($username);</script>";
+                echo "            
                         <div class='dropdown'>
                         <button class='username' name='username'>Welcome, $username!</button>
                         <div class='dropdown-content'>
@@ -150,11 +157,10 @@ mysqli_close($connection);
                         </div>
                     </div>
                     <a class='newpost'>New Post</a>";
-                }
-                else{
-                    echo "<script>console.log('1username not get');</script>";
-                    echo "<a class='active' href='login.php'>Login/Signup</a>";
-                }
+            } else {
+                echo "<script>console.log('1username not get');</script>";
+                echo "<a class='active' href='login.php'>Login/Signup</a>";
+            }
             ?>
             <a class="home" href="home.php">Home</a>
         </div>
@@ -166,9 +172,9 @@ mysqli_close($connection);
                 <h1>Trending</h1>
             </div>
             <div class="group">
-                <div class="col"> <img  src="img/1.gif"></div>
-                <div class="col"> <img  src="img/1.gif"></div>
-                <div class="col"> <img  src="img/1.gif"></div>
+                <div class="col"> <img src="img/1.gif"></div>
+                <div class="col"> <img src="img/1.gif"></div>
+                <div class="col"> <img src="img/1.gif"></div>
             </div>
         </div>
         <div class="sub-header">
@@ -180,7 +186,7 @@ mysqli_close($connection);
             <button class="btn " onclick="filterSelection('sports')"> Sports</button>
             <button class="btn " onclick="filterSelection('art')"> Art</button>
             <button class="btn " onclick="filterSelection('game')"> Game</button>
-          </div>
+        </div>
         <div class="popularposts">
             <div class="left">
                 <!-- series of blocks -->
@@ -297,9 +303,15 @@ mysqli_close($connection);
                 <div class="sub-header">
                     <h2>Top view posts</h2>
                 </div>
-                <a href="#"><p>1 zzw</p></a>
-                <a href="#"><p>2 wrc</p></a>
-                <a href="#"><p>3 yyht</p></a>
+                <a href="#">
+                    <p>1 zzw</p>
+                </a>
+                <a href="#">
+                    <p>2 wrc</p>
+                </a>
+                <a href="#">
+                    <p>3 yyht</p>
+                </a>
             </div>
         </div>
     </div>

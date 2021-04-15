@@ -93,8 +93,8 @@ if (isset($_POST['innerSubmit'])) {
         }*/
 
         // username
-        if (isset($_POST['username'])) {
-            $username = $_POST['username'];
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
         } else {
             $username = 'test';
         }
@@ -107,7 +107,6 @@ if (isset($_POST['innerSubmit'])) {
         } else {
             echo 'Posted unsuccessfully!';
         }
-        mysqli_free_result($resultcom);
         mysqli_close($connection);
     }
 }
@@ -174,8 +173,8 @@ if (isset($_POST['submit'])) {
         }
 
         // username
-        if (isset($_POST['username'])) {
-            $username = $_POST['username'];
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
         } else {
             $username = 'test';
         }
@@ -188,7 +187,7 @@ if (isset($_POST['submit'])) {
         } else {
             echo 'Posted unsuccessfully!';
         }
-        mysqli_free_result($result);
+        
         mysqli_close($connection);
     }
 }

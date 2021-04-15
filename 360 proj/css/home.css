@@ -4,7 +4,7 @@ body {
 }
 
 .header {
-  width:100%;
+  width: 100%;
   border-top: solid lightgrey 1px;
   background-color: white;
   padding: 0.5em;
@@ -25,7 +25,7 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
-.home:hover{
+.home:hover {
   background-color: rgb(247, 247, 247);
 }
 .active {
@@ -42,7 +42,7 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
-.active:hover{
+.active:hover {
   background-color: rgb(247, 247, 247);
 }
 .newpost {
@@ -59,16 +59,16 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 }
-.newpost:hover{
+.newpost:hover {
   background-color: rgb(75, 146, 253);
-  border-color:rgb(75, 146, 253);
+  border-color: rgb(75, 146, 253);
 }
 .search {
   margin: 0 0.5em 0 0.5em;
   display: inline-flex;
   height: 32px;
   max-width: 400px;
-  width:400px;
+  width: 400px;
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow: hidden;
@@ -93,7 +93,6 @@ body {
   color: black;
 }
 
-
 .posts {
   display: block;
 }
@@ -117,7 +116,7 @@ body {
 .col:hover {
   border: solid grey 1px;
 }
-.group{
+.group {
   padding-left: 0.5em;
 }
 .popularposts {
@@ -129,80 +128,77 @@ body {
   padding: 0 1em 0.5em 0;
 }
 
-
-.postBlock{
-  display:flexbox;
+.postBlock {
+  display: flexbox;
   min-width: 550px;
   min-height: 200px;
-  overflow-y:scroll;
-  overflow:hidden;
+  overflow-y: scroll;
+  overflow: hidden;
   display: block;
   background-color: white;
   margin: 0.5em;
   border: solid lightgrey 1px;
   border-radius: 10px;
 }
-.post{
+.post {
   display: block;
-  margin:1em 2em 1em 2em;
+  margin: 1em 2em 1em 2em;
 }
-.postTitle{
-  color:black;
+.postTitle {
+  color: black;
   font-size: 12pt;
 }
-.img{
+.img {
   border: solid lightgrey 1px;
-
 }
-.content{
-  color:black;
+.content {
+  color: black;
   font-size: 15pt;
 }
-.postHeader{
+.postHeader {
   max-width: fit-content;
-  display:block;
+  display: block;
 }
 
-.authorIcon{
+.authorIcon {
   vertical-align: -webkit-baseline-middle;
-  display:inline-block;
-
+  display: inline-block;
 }
-.author{
-  color:black;
-  margin:0;
-  display:inline-block;
+.author {
+  color: black;
+  margin: 0;
+  display: inline-block;
   vertical-align: -webkit-baseline-middle;
 }
-.author:hover{
+.author:hover {
   text-decoration: underline;
   cursor: pointer;
 }
-.postTime{
-  color:grey;
-  display:inline-block;
+.postTime {
+  color: grey;
+  display: inline-block;
   vertical-align: -webkit-baseline-middle;
 }
-.commentBlock{
-  margin:0.5em 0.5em 0 0;
+.commentBlock {
+  margin: 0.5em 0.5em 0 0;
   border-radius: 10pt;
-  padding:0 0.5em 0 0.5em;
-display:block;
-max-width: fit-content;
+  padding: 0 0.5em 0 0.5em;
+  display: block;
+  max-width: fit-content;
 }
-.commentBlock:hover{
+.commentBlock:hover {
   background-color: lightgrey;
   cursor: pointer;
 }
-.commentIcon{
-  display:inline-block;
-  vertical-align:-webkit-baseline-middle;
+.commentIcon {
+  display: inline-block;
+  vertical-align: -webkit-baseline-middle;
   opacity: 0.5;
 }
-.comments{
+.comments {
   font-weight: bold;
-  color:grey;
-  display:inline-block;
+  color: grey;
+  display: inline-block;
   vertical-align: -webkit-baseline-middle;
 }
 .postBlock:hover {
@@ -217,12 +213,12 @@ max-width: fit-content;
   border: solid lightgrey 1px;
   border-radius: 10px;
   margin-top: 0.5em;
-  margin-left:2em;
+  margin-left: 2em;
   padding: 0.5em 1em 0.5em 1em;
 }
 footer {
   padding: 10px 20px 10px 20px;
-  width:100%;
+
   background-color: white;
 }
 /* modal */
@@ -235,12 +231,12 @@ footer {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow:auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 .modal-content {
-  min-height:600px;
+  min-height: 600px;
   max-width: 600px;
   overflow-y: auto;
   background-color: #fefefe;
@@ -264,7 +260,7 @@ footer {
   cursor: pointer;
 }
 
-.newpost-form{
+.newpost-form {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -272,14 +268,14 @@ footer {
   top: 0;
   width: 100%; /* Full width */
   height: 100%; /* Full height */
-  overflow:auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-.mainform{
-  display:block;
-  min-height:600px;
+.mainform {
+  display: block;
+  min-height: 250px;
   max-width: 600px;
   overflow-y: auto;
   background-color: #fefefe;
@@ -288,85 +284,117 @@ footer {
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
 }
-.formheader{
-  margin:0 0.5em 0.5em 0.5em;
-  display:block;
-  float:right;
+.formheader {
+  margin: 0 0.5em 0.5em 0.5em;
+  display: block;
+  float: right;
 }
-.formlayout{
-  margin:3em;
+.formlayout {
+  margin: 3em;
 }
-.titleBlock{
-border-bottom:solid lightgrey 1px;  
-display:block;
+
+.titleBlock {
+  border-bottom: solid lightgrey 1px;
+  display: block;
 }
-.title{
-  color:grey;
-  display:inline-block;
+.title {
+  color: grey;
+  display: inline-block;
 }
-.inputTitle{
-  width:90%;
-  border:none;
+.inputTitle {
+  width: 90%;
+  border: none;
   border-style: none;
 }
-.inputTitle:focus{
+.inputTitle:focus {
   outline: none !important;
 }
-.inputContent{
-  border:none;
-  margin-top:1em;
-  width:100%;
-  min-height:300pt;
-  max-height:500pt;
+.inputContent {
+  border: none;
+  margin-top: 1em;
+  width: 100%;
+  min-height: 100pt;
+  max-height: 200pt;
   min-width: 100%;
   max-width: 100%;
 }
-.inputContent:focus{
+
+.inputContent:focus {
   outline: none;
 }
-.formButton{
-  display:block;
+
+.formButton {
+
+  display: block;
 }
-#fileToUpload{
-  padding-top: 1em;
-  display:none;
+
+#fileToUpload {
+  margin-top: 1em;
+  display: none;
 }
-.fileToUpload{
-  vertical-align: top;
+.fileToUpload {
+  display: inline-block;
+  padding-top: 5pt;
+  vertical-align: -webkit-baseline-middle;
   background-color: white;
   border-radius: 10pt;
-  border:none;
-  outline:none;
-  margin-top: 2pt;
+  border: none;
+  outline: none;
   margin-left: 0.5em;
 }
-.fileToUpload:hover{
+.fileToUpload:hover {
   cursor: pointer;
   background-color: rgb(241, 241, 241);
 }
-.fileToUpload:active{
+.fileToUpload:active {
   background-color: rgb(228, 228, 228);
 }
-.postButton{
+.postButton {
   vertical-align: top;
   background-color: rgb(51, 132, 255);
-  border-color:rgb(51, 132, 255);
+  border-color: rgb(51, 132, 255);
   border-radius: 10pt;
-  width:80px;
-  height:40px;
+  width: 80px;
+  height: 40px;
   font-size: 12pt;
-  color:white;
-  display:block;
-  margin:0 0em 3em 3em;
-  display:inline-block;
+  color: white;
+  display: block;
+  margin: 0 0em 3em 3em;
+  display: inline-block;
 }
-.postButton:hover{
+.postButton:hover {
   cursor: pointer;
   background-color: rgb(75, 146, 253);
-  border-color:rgb(75, 146, 253);
+  border-color: rgb(75, 146, 253);
+}
+.uploadedImage{
+  display:none;
+}
+.uploadedImageBlock {
+  position: relative;
+  display: block;
+  margin:1em 0 1em 0;
+  max-width: fit-content;
+  max-height:200pt;
+}
+.closeImage {
+  display:none;
+  position: absolute;
+  z-index: 1;
+  top:-7pt;
+  right:0;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+}
+.closeImage:hover,
+.closeImage:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 .closeform {
-  display:inline-block;
+  display: inline-block;
   color: #aaa;
   font-size: 28px;
   font-weight: bold;
@@ -378,7 +406,7 @@ display:block;
   cursor: pointer;
 }
 
-.btn{
+.btn {
   color: black;
   margin: 0 0.5em 0 1em;
   text-decoration: none;
@@ -391,8 +419,8 @@ display:block;
   padding-right: 20px;
 }
 
-.btn:hover{
-  background-color:rgb(241, 241, 241);
+.btn:hover {
+  background-color: rgb(241, 241, 241);
 }
 .username {
   background-color: white;
@@ -434,7 +462,7 @@ display:block;
 }
 
 .dropdown-content a:hover {
-  background-color: #cfcfcf;
+  background-color: #f7f7f7;
 }
 
 .dropdown:hover .dropdown-content {
@@ -442,5 +470,5 @@ display:block;
 }
 
 .dropdown:hover .username {
-  background-color: #b6b6b6;
+  background-color: #f7f7f7;
 }

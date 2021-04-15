@@ -46,8 +46,8 @@
         
         mysqli_close($connection);
     }else if(isset($spassword)){
-        $sql1 = "select * from users where email like '$email';";
-        $sql2 = "select * from users where username like '$username';";
+        $sql1 = "select * from users where email like '$semail';";
+        $sql2 = "select * from users where username like '$susername';";
         $results1 = mysqli_query($connection, $sql1);
         $results2 = mysqli_query($connection, $sql2);
 

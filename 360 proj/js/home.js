@@ -86,7 +86,7 @@ $(function () {
     var div = $(
       '<div class="innerBlock"></div>'
     ).css('display','block');
-    var form =$('<form class="commentForm"></form').appendTo(div);
+    var form =$('<form class="commentForm" method="POST" action="" enctype="multipart/form-data"></form>').appendTo(div);
     var ta =$('<textarea style="width:200pt; height:50pt; outline:none;" name="commentInput" placeholder="Add description" oninvalid="this.setCustomValidity(\'Enter your description\')" oninput="this.setCustomValidity(\'\')" required></textarea>')
       .appendTo(form)
       .css({
@@ -100,7 +100,8 @@ $(function () {
       .appendTo(form);
     var inner = $(".innerComment");
     inner.append(div);
+    
   });
-
+  /* newcomment */
 
 });

@@ -58,7 +58,59 @@ if ($_SESSION['isLogin'] != null) {
         </div>
     </div>
 </div>
+<?php 
+$postcom = false;
+if (isset($_POST['innerSubmit'])) {
+    $host = "localhost";
+    $database = "360project";
+    $user = "webuser";
+    $password = "P@ssw0rd";
 
+    $connection = mysqli_connect($host, $user, $password, $database);
+
+    $error = mysqli_connect_error();
+    if ($error != null) {
+        $output = "<p>Unable to connect to database!</p>";
+        die($error);
+    } else {
+
+        //  content
+        if (isset($_POST['commentInput'])) {
+            $contentcom = $_POST['commentInput'];
+        }
+
+        // date
+        date_default_timezone_set('America/Los_Angeles');
+        $datecom = date('Y-m-d h:i:s a');
+
+        // img
+     /*   if (isset($_POST['submit'])) {
+            $form_data = $_FILES['fileToUpload']['tmp_name'];
+            // img binary data
+            $img = addslashes(fread(fopen($form_data, "r"), filesize($form_data)));
+        } else {
+            $img = null;
+        }*/
+
+        // username
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+        } else {
+            $username = 'test';
+        }
+
+        $sqlcom = "INSERT INTO comment(commentid,content,date,username) VALUES (0,'$contentcom','$datecom','$username');";
+        $resultcom = mysqli_query($connection, $sqlcom);
+        if ($resultcom) {
+            echo 'Posted successfully!';
+            $postcom = true;
+        } else {
+            echo 'Posted unsuccessfully!';
+        }
+        mysqli_close($connection);
+    }
+}
+?>
 <!-- newpost form -->
 <form class="newpost-form" method="POST" action="" enctype="multipart/form-data">
     <div class="mainform">
@@ -121,8 +173,8 @@ if (isset($_POST['submit'])) {
         }
 
         // username
-        if (isset($_POST['username'])) {
-            $username = $_POST['username'];
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
         } else {
             $username = 'test';
         }
@@ -135,7 +187,7 @@ if (isset($_POST['submit'])) {
         } else {
             echo 'Posted unsuccessfully!';
         }
-        mysqli_free_result($result);
+        
         mysqli_close($connection);
     }
 }

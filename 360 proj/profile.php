@@ -99,7 +99,7 @@ if($error != null)
             </form>
             <?php 
                 if(isset($username)){
-                    echo "<script>console.log($username);</script>";
+                    echo "<script>console.log('$username');</script>";
                     echo "
                     <div class='dropdown'>
                         <button class='username' name='username'>Welcome, $username!</button>
@@ -125,8 +125,8 @@ if($error != null)
             <div class="item2">
             <?php 
                 if(isset($username)){
-                    echo "<script>console.log($uname);</script>";
-                    echo "<script>console.log($email);</script>";
+                    echo "<script>console.log('$uname');</script>";
+                    echo "<script>console.log('$email');</script>";
                     echo "
                     <h1>$username</h1>
                     <p>$email</p>

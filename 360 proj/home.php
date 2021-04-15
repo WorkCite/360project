@@ -46,11 +46,15 @@ if ($_SESSION['isLogin'] != null) {
     </script>
     <title>My Discussion Forum Website</title>
 </head>
+
 <!-- block modal -->
 <div class="modal" title="Basic dialog">
     <div class="modal-content">
         <span class="close">&times;</span>
         <div class="paragraph">
+        </div>
+        <div class = "innerComment">
+            <button name="submit" type="submit"class="openComment">Comment</button>
         </div>
     </div>
 </div>
@@ -66,7 +70,7 @@ if ($_SESSION['isLogin'] != null) {
                 <label class="title">Title</label>
                 <input class="inputTitle" type="text"></br>
             </div> -->
-            <textarea placeHolder="type your content" class="inputContent" name="inputContent"></textarea>
+            <textarea placeholder="Add description" oninvalid="this.setCustomValidity('Enter your description')" oninput="this.setCustomValidity('')" class="inputContent" name="inputContent" required></textarea>
             <div class="uploadedImageBlock">
                 <span class="closeImage">&times;</span>
                 <img class="uploadedImage" name="uploadedImage">
@@ -81,8 +85,10 @@ if ($_SESSION['isLogin'] != null) {
 </form>
 
 <?php
+/* ini_set("display_errors","On");
+error_reporting(E_ALL); */
 if (isset($_POST['submit'])) {
-
+    $posted = false;
     $host = "localhost";
     $database = "360project";
     $user = "webuser";
@@ -110,7 +116,7 @@ if (isset($_POST['submit'])) {
             $form_data = $_FILES['fileToUpload']['tmp_name'];
             // img binary data
             $img = addslashes(fread(fopen($form_data, "r"), filesize($form_data)));
-        }else{
+        } else {
             $img = null;
         }
 
@@ -127,6 +133,7 @@ if (isset($_POST['submit'])) {
         if ($result) {
             echo 'Posted successfully!';
             mysqli_free_result($result);
+            $posted = true;
         } else {
             echo 'Posted unsuccessfully!';
             mysqli_free_result($result);
@@ -192,6 +199,66 @@ if (isset($_POST['submit'])) {
                 <!-- series of blocks -->
                 <div class="posts">
                     <!-- single block -->
+                    <?php
+                    if ($posted) {
+                        date_default_timezone_set('America/Los_Angeles');
+                        $postedTime = date('Y-m-d h:i:s a');
+                        $diff = abs(strtotime($postedTime) - strtotime($date));
+                        $years   = floor($diff / (365 * 60 * 60 * 24));
+                        $months  = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+                        $days    = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+                        $hours   = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24) / (60 * 60));
+                        $minutes  = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60) / 60);
+                        $seconds = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60 - $minuts * 60));
+                        echo '<div class="postBlock">
+                        <div class="post">
+                            <div class="postHeader">
+                                <div class="authorIcon">
+                                    <img width="20pt" height="20pt">
+                                </div>
+                                <div class="author"><p>' . $username . '</p></div>
+                                <div class="postTime"><p>&middot; ';
+                        if ($years >= 1) {
+                            echo $years;
+                        }
+                        if ($years < 1 && $months >= 1) {
+                            echo $months;
+                        }
+                        if ($months < 1 && $days >= 1) {
+                            echo $days;
+                        }
+                        if ($days < 1 && $hours >= 1) {
+                            echo $hours;
+                        }
+                        if ($hours < 1 && $minutes >= 1) {
+                            echo $minutes;
+                        }
+                        if ($minutes < 1 && $seconds >= 1) {
+                            echo $seconds;
+                        }
+                        /* pull $img from DB and $img should be converted to src */
+                        /* TODO */
+                        echo 'ago</p>
+                    </div>
+                        </div>
+                            <div class="content">
+                                <p>' . $content . '</p>
+                            </div>
+                            <div class="image">
+                                <img class="img" src="' . $img . '">
+                            </div>
+                        <div class="commentBlock">
+                            <div class="commentIcon">
+                                <img width="20pt" height="20pt" src="img/commentIcon.png">
+                            </div>
+                        <div class="comments">
+                            <p>Comments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>';
+                    }
+                    ?>
                     <div class="postBlock">
                         <div class="post">
                             <div class="postHeader">
@@ -202,7 +269,7 @@ if (isset($_POST['submit'])) {
                                     <p>Author</p>
                                 </div>
                                 <div class="postTime">
-                                    <p>&middot; Posted (time)</p>
+                                    <p>&middot; Posted (time) ago</p>
                                 </div>
                             </div>
                             <div class="content">
@@ -231,7 +298,7 @@ if (isset($_POST['submit'])) {
                                     <p>Author2</p>
                                 </div>
                                 <div class="postTime">
-                                    <p>&middot; Posted (time)</p>
+                                    <p>&middot; Posted (time) ago</p>
                                 </div>
                             </div>
                             <div class="content">

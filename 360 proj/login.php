@@ -36,6 +36,7 @@
             if($row['password']==$lp){
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['isLogin']=true;
+                header("refresh:3;Location:home.php");
                 echo "<script> {window.alert('Login success, go back to home page after 3s.');location.href='home.php'} </script>";
                 
             }
@@ -61,7 +62,8 @@
             mysqli_query($connection, $sql3);
             $_SESSION['username'] = $susername;
             $_SESSION['isLogin']=true;
-            echo "<script> {window.alert('Sign up success, go back to home page after 3s.');location.href='home.php} </script>";
+            header("refresh:3;Location:home.php");
+            echo "<script> {window.alert('Sign up success, go back to home page after 3s.');location.href='home.php'} </script>";
         }
         mysqli_free_result($results1);
         mysqli_free_result($results2);

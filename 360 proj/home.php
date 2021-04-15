@@ -73,15 +73,14 @@ if($_SESSION['isLogin']!=null){
                             <a href='#'>Posts</a>
                             <a href='login.php'>Logout</a>
                         </div>
-                    </div>";
+                    </div>
+                    <a class='newpost'>New Post</a>";
                 }
                 else{
                     echo "<script>console.log('1username not get');</script>";
                     echo "<a class='active' href='login.php'>Login/Signup</a>";
                 }
             ?>
-
-            <a class="newpost">New Post</a>
             <a class="home" href="home.php">Home</a>
         </div>
     </header>

@@ -186,10 +186,6 @@ if (isset($_POST['submit'])) {
         } else {
             echo 'Posted unsuccessfully!';
         }
-<<<<<<< HEAD
-=======
-        
->>>>>>> b66767358178a0833d6ef7b14286aadf120009da
         mysqli_close($connection);
     }
 }

@@ -21,26 +21,17 @@ if ($_SESSION == null) {
     </head>
 
 <body>
-<<<<<<< HEAD
     <header>
-=======
-    
-    <!--<header>
-
->>>>>>> b66767358178a0833d6ef7b14286aadf120009da
         <div class="header">
             <form class="search">
                 <img class="searchIcon" src="./img/search_icon.png">
                 <input type="search" placeholder="Search" class="searchBox">
-<<<<<<< HEAD
+
             </form>     
-        <a class="active" href="login.php">Admin</a>
-        <a class="home" href="home.php">Home</a>
-=======
+            <a class="active" href="login.php">Admin</a>
+            <a class="home" href="home.php">Home</a>
             </form>
-        
-        
-    </div>-->
+    </div>
     </header> 
     <div class="adduser">
     <form method="post" action="signup.php">
@@ -50,7 +41,7 @@ if ($_SESSION == null) {
         
         <button  onclick="form.submit()">Add User</button>
     </form>
->>>>>>> b66767358178a0833d6ef7b14286aadf120009da
+
     </div>
 
     <?php

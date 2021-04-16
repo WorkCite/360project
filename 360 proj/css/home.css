@@ -218,7 +218,7 @@ body {
 }
 footer {
   padding: 10px 20px 10px 20px;
-
+  width:100%;
   background-color: white;
 }
 /* modal */

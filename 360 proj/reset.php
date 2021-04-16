@@ -75,6 +75,9 @@ if ($error != null) {
     $output = "<p>Unable to connect to database!</p>";
     die($error);
 } else {
+  if($rp!=$nw){
+    echo "<script> {window.alert('Entered passwords do not match. Please try again.');} </script>";
+  }else{
     $temp = md5($nw);
     $sql = "UPDATE users SET password = '$temp' WHERE email = '$email';";
     $result = mysqli_query($connection, $sql);
@@ -84,10 +87,10 @@ if ($error != null) {
     } else {
         echo '<script>console.log("Updated unsuccessfully!")</script>';
     }
-    mysqli_free_result($result);
     mysqli_close($connection);
      $_SESSION['email']=null;
    }
+  }
 }
 ?>
 </html>

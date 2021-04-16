@@ -24,7 +24,6 @@ if ($_SESSION['isLogin'] != null) {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
-    <script type="text/javascript" src="js/home2.js"></script>
     <script language="javascript" type="text/javascript">
         function readURL(input) {
             var close = $('.closeImage');
@@ -58,7 +57,59 @@ if ($_SESSION['isLogin'] != null) {
         </div>
     </div>
 </div>
+<?php 
+$postcom = false;
+if (isset($_POST['innerSubmit'])) {
+    $host = "localhost";
+    $database = "360project";
+    $user = "webuser";
+    $password = "P@ssw0rd";
 
+    $connection = mysqli_connect($host, $user, $password, $database);
+
+    $error = mysqli_connect_error();
+    if ($error != null) {
+        $output = "<p>Unable to connect to database!</p>";
+        die($error);
+    } else {
+
+        //  content
+        if (isset($_POST['commentInput'])) {
+            $contentcom = $_POST['commentInput'];
+        }
+
+        // date
+        date_default_timezone_set('America/Los_Angeles');
+        $datecom = date('Y-m-d h:i:s a');
+
+        // img
+     /*   if (isset($_POST['submit'])) {
+            $form_data = $_FILES['fileToUpload']['tmp_name'];
+            // img binary data
+            $img = addslashes(fread(fopen($form_data, "r"), filesize($form_data)));
+        } else {
+            $img = null;
+        }*/
+
+        // username
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
+        } else {
+            $username = 'test';
+        }
+
+        $sqlcom = "INSERT INTO comment(commentid,content,date,username) VALUES (0,'$contentcom','$datecom','$username');";
+        $resultcom = mysqli_query($connection, $sqlcom);
+        if ($resultcom) {
+            echo 'Posted successfully!';
+            $postcom = true;
+        } else {
+            echo 'Posted unsuccessfully!';
+        }
+        mysqli_close($connection);
+    }
+}
+?>
 <!-- newpost form -->
 <form class="newpost-form" method="POST" action="" enctype="multipart/form-data">
     <div class="mainform">
@@ -121,8 +172,8 @@ if (isset($_POST['submit'])) {
         }
 
         // username
-        if (isset($_POST['username'])) {
-            $username = $_POST['username'];
+        if (isset($_SESSION['username'])) {
+            $username = $_SESSION['username'];
         } else {
             $username = 'test';
         }
@@ -135,6 +186,10 @@ if (isset($_POST['submit'])) {
         } else {
             echo 'Posted unsuccessfully!';
         }
+<<<<<<< HEAD
+=======
+        
+>>>>>>> b66767358178a0833d6ef7b14286aadf120009da
         mysqli_close($connection);
     }
 }
@@ -150,7 +205,7 @@ if (isset($_POST['submit'])) {
             </form>
             <?php
             if (isset($username)) {
-                echo "<script>console.log($username);</script>";
+                echo "<script>console.log('$username');</script>";
                 echo "            
                         <div class='dropdown'>
                         <button class='username' name='username'>Welcome, $username!</button>
@@ -159,7 +214,7 @@ if (isset($_POST['submit'])) {
                             <a href='#'>Posts</a>
                             <a href='login.php'>Logout</a>
                         </div>
-                    </div>
+                    </div>  
                     <a class='newpost'>New Post</a>";
             } else {
                 echo "<script>console.log('1username not get');</script>";

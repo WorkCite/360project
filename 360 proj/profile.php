@@ -27,7 +27,7 @@ $numpost = null;
 $postimg = array();
 $connection = mysqli_connect($host, $user, $password0, $database);
 $error = mysqli_connect_error();
-$tname = "test";
+$tn = null;
 if($error != null)
     {
     $output = "<p>Unable to connect to database!</p>";
@@ -58,28 +58,28 @@ if($error != null)
                     
                 }
         }*/
-        $sql2 = "select postid from post;";
+        $sql2 = "select * from post;";
         $results2 = mysqli_query($connection, $sql2);
         //and fetch requsults
-        $row2 = mysqli_fetch_assoc($results2);
+        while($row2 = mysqli_fetch_assoc($results2)){
         if($row2 != null){
-           $numpost = count($row2);
             $temp = $row2['postid'];
-           echo "<script>console.log('co: '+$temp);</script>";
+           echo "<script>console.log('co: '+".$row2['postid'].");</script>";
            //echo "<script>console.log($row2['postid']);</script>";
            //echo "<script>console.log($row2['postid']);</script>";
-        }
-        $sql3 = "select img from post;";
+           $numpost +=1;
+        }}
+        /*$sql3 = "select img from post;";
         $results3 = mysqli_query($connection, $sql3);
         //and fetch requsults
         $row3 = mysqli_fetch_assoc($results3);
         if($row3 != null){
             $numimg = count($row3);
-            $temp = $row2['postid'];
+            $temp = $row3['postid'];
            echo "<script>console.log('co: '+$temp);</script>";
            //echo "<script>console.log($row2['postid']);</script>";
            //echo "<script>console.log($row2['postid']);</script>";
-        }
+        }*/
         mysqli_close($connection);
         
     }
@@ -99,7 +99,7 @@ if($error != null)
             </form>
             <?php 
                 if(isset($username)){
-                    echo "<script>console.log($username);</script>";
+                    echo "<script>console.log('$username');</script>";
                     echo "
                     <div class='dropdown'>
                         <button class='username' name='username'>Welcome, $username!</button>
@@ -125,8 +125,8 @@ if($error != null)
             <div class="item2">
             <?php 
                 if(isset($username)){
-                    echo "<script>console.log($uname);</script>";
-                    echo "<script>console.log($email);</script>";
+                    echo "<script>console.log('$uname');</script>";
+                    echo "<script>console.log('$email');</script>";
                     echo "
                     <h1>$username</h1>
                     <p>$email</p>
@@ -143,7 +143,7 @@ if($error != null)
             </div>
             <div class="item4">
             <?php 
-                echo "<h3>".$numimg."</h3>";
+                echo "<h3>".$numpost."</h3>";
             ?>
                 <p>Photos</p>
             </div>

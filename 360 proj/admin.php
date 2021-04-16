@@ -22,6 +22,8 @@
         
         
     </div>-->
+
+    <!-- adduser html -->
     </header> 
     <div class="adduser">
     <form method="post" action="signup.php">
@@ -32,6 +34,7 @@
         <button  onclick="form.submit()">Add User</button>
     </form>
     </div>
+    <!-- deleteuser html -->
     <div class="deleteuser">
     <form method="post" action="deleteuser.php">
         <h4>You sure you want to delete this user permanently ? </h4>
@@ -64,8 +67,8 @@
         
         while($row = mysqli_fetch_assoc($results)){
             foreach($row as $e){
-               
-                echo "<tr><td> " .$e. "</td><td><a href='posts.php'> 0 </a></td><td><input type='submit' name='btn_delete' value='&#10003;' /> Click to Confirm</button></td></tr>";
+                //third input submit is the model for delete
+                echo "<tr><td> " .$e. "</td><td><a href='adminposts.php'> 0 </a></td><td><input type='submit' name='btn_delete' value='&#10003;' /> Click to Confirm</button></td></tr>";
                
            }    
         }
@@ -79,6 +82,7 @@
 
 
     ?>
+    <!-- adduser button -->
     <button class="add">Add User</button>
 </body>
 

@@ -28,7 +28,7 @@ if (isset($_POST['username'])) {
   $email = $_POST['username'];
   
 
-  $link = '123123123';
+  $link = 'http://localhost/360project/360%20proj/reset.php';
 
   try {
     //Server
@@ -48,8 +48,8 @@ if (isset($_POST['username'])) {
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Reset password link';
     $mail->Body    = 'Hi,</br><p>Click the link below to reset your password</p></br><a href=">' . $link . '">'.$link.'</a>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
-    $mail->send();
+/*     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+ */    $mail->send();
     echo 'console.log("Message has been sent")';
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

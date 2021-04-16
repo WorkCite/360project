@@ -86,7 +86,7 @@ $(function () {
     var div = $(
       '<div class="innerBlock"></div>'
     ).css('display','block');
-    var form =$('<form class="commentForm" method="POST" action="" enctype="multipart/form-data"></form>').appendTo(div);
+    var form =$('<form class="commentForm" method="POST" action="" enctype="multipart/form-data" target="my_iframe"></form>').appendTo(div);
     var ta =$('<textarea style="width:200pt; height:50pt; outline:none;" name="commentInput" placeholder="Add description" oninvalid="this.setCustomValidity(\'Enter your description\')" oninput="this.setCustomValidity(\'\')" required></textarea>')
       .appendTo(form)
       .css({
@@ -99,6 +99,8 @@ $(function () {
     var btn =$('<button type="submit" name="innerSubmit">Submit</button>')
       .appendTo(form);
     var inner = $(".innerComment");
+    var irame = $('<iframe id="id_iframe" frameborder="0" name="my_iframe" style="display:none;"></iframe>');///有问题
+    irame.append(div);
     inner.append(div);
     
   });

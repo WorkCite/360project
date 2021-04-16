@@ -45,7 +45,6 @@ if ($_SESSION['isLogin'] != null) {
     </script>
     <title>My Discussion Forum Website</title>
 </head>
-
 <!-- block modal -->
 <div class="modal" title="Basic dialog">
     <div class="modal-content">
@@ -54,6 +53,41 @@ if ($_SESSION['isLogin'] != null) {
         </div>
         <div class = "innerComment">
             <button name="submit" type="submit"class="openComment">Comment</button>
+        </div>
+        <div class="commentlist">
+            <?php 
+            $pid = $_SESSION['postid'];
+            echo "<script>console.log('pid'+'$pid');</script>";
+            $host = "localhost";
+            $database = "360project";
+            $user = "webuser";
+            $password0 = "P@ssw0rd";
+            $connection = mysqli_connect($host, $user, $password0, $database);
+            $error = mysqli_connect_error();
+            $comcontent = null;
+            if($error != null)
+                {
+                $output = "<p>Unable to connect to database!</p>";
+                exit($output);
+                }
+                else
+                {
+                    //good connection, so do you thing
+                    $sql = "select content, date from comment where postid = '$pid';";
+                    $results = mysqli_query($connection, $sql);
+                    //and fetch requsults
+                    while( $row = mysqli_fetch_assoc($results)){
+                        if($row != null){
+                            echo "<p style='display: inline-block'>".$row['content']."</p>";
+                            echo "<p style='display: inline-block'>".$row['date']."</p>";
+                            echo "<hr>";
+                        }
+                    }
+                    
+                    mysqli_close($connection);
+                    
+                }
+            ?>
         </div>
     </div>
 </div>
@@ -64,7 +98,7 @@ if (isset($_POST['innerSubmit'])) {
     $database = "360project";
     $user = "webuser";
     $password = "P@ssw0rd";
-
+    $temppid = $_SESSION['postid'];
     $connection = mysqli_connect($host, $user, $password, $database);
 
     $error = mysqli_connect_error();
@@ -82,15 +116,6 @@ if (isset($_POST['innerSubmit'])) {
         date_default_timezone_set('America/Los_Angeles');
         $datecom = date('Y-m-d h:i:s a');
 
-        // img
-     /*   if (isset($_POST['submit'])) {
-            $form_data = $_FILES['fileToUpload']['tmp_name'];
-            // img binary data
-            $img = addslashes(fread(fopen($form_data, "r"), filesize($form_data)));
-        } else {
-            $img = null;
-        }*/
-
         // username
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
@@ -98,7 +123,7 @@ if (isset($_POST['innerSubmit'])) {
             $username = 'test';
         }
 
-        $sqlcom = "INSERT INTO comment(commentid,content,date,username) VALUES (0,'$contentcom','$datecom','$username');";
+        $sqlcom = "INSERT INTO comment(commentid,content,date,username,postid) VALUES (0,'$contentcom','$datecom','$username','$temppid');";//只能传实时
         $resultcom = mysqli_query($connection, $sqlcom);
         if ($resultcom) {
             echo 'Posted successfully!';
@@ -139,6 +164,7 @@ if (isset($_POST['innerSubmit'])) {
 /* ini_set("display_errors","On");
 error_reporting(E_ALL); */
 $posted = false;
+$_SESSION['postid']=null;
 if (isset($_POST['submit'])) {
     $host = "localhost";
     $database = "360project";
@@ -185,6 +211,13 @@ if (isset($_POST['submit'])) {
             $posted = true;
         } else {
             echo 'Posted unsuccessfully!';
+        }
+        $sqlp = "SELECT postid FROM post WHERE content = '$content' AND username = '$username';";
+        $resultp = mysqli_query($connection, $sqlp);
+        $rowp = mysqli_fetch_assoc($resultp);
+        if($rowp != null){
+         $_SESSION['postid'] = $rowp['postid'];
+         echo "<script>console.log('".$_SESSION['postid']."');</script>";
         }
         mysqli_close($connection);
     }
@@ -293,7 +326,7 @@ if (isset($_POST['submit'])) {
                                 <p>' . $content . '</p>
                             </div>
                             <div class="image">
-                                <img class="img" src="' . $img . '">
+                                <img class="img" src="img/1.gif">
                             </div>
                         <div class="commentBlock">
                             <div class="commentIcon">
@@ -307,6 +340,7 @@ if (isset($_POST['submit'])) {
             </div>';
                     }
                     ?>
+                    <!--不能用-->
                     <div class="postBlock">
                         <div class="post">
                             <div class="postHeader">
@@ -314,14 +348,14 @@ if (isset($_POST['submit'])) {
                                     <img width="20pt" height="20pt">
                                 </div>
                                 <div class="author">
-                                    <p>Author</p>
+                                    <p><?php $pname ?></p>
                                 </div>
                                 <div class="postTime">
-                                    <p>&middot; Posted (time) ago</p>
+                                    <p>&middot; <?php $pdate ?></p>
                                 </div>
                             </div>
                             <div class="content">
-                                <p>This is a post.</p>
+                                <p><?php $pcon ?></p>
                             </div>
                             <div class="image">
                                 <img class="img" src="img/1.gif">
@@ -336,6 +370,38 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
                     </div>
+                    <?php 
+                   /* $pid = $_SESSION['postid'];
+                    echo "<script>console.log('pid'+'$pid');</script>";
+                    $host = "localhost";
+                    $database = "360project";
+                    $user = "webuser";
+                    $password0 = "P@ssw0rd";
+                    $connection = mysqli_connect($host, $user, $password0, $database);
+                    $error = mysqli_connect_error();
+                    $pname = null;
+                    $pcon = null;
+                    $pdate = null;
+                    if($error != null)
+                        {
+                        $output = "<p>Unable to connect to database!</p>";
+                        exit($output);
+                        }
+                        else
+                        {
+                            //good connection, so do you thing
+                            $sql = "select content, date, username, from post where postid = 12;";
+                            $results = mysqli_query($connection, $sql);
+                            //and fetch requsults
+                            $prow = mysqli_fetch_assoc($results);
+                                if($prow != null){
+                                    $pname = $prow['username'];
+                                    $pdate = $prow['date'];
+                                    $pcon  =$prow['content'];
+                                }
+                            mysqli_close($connection); 
+                        }*/
+                    ?>
                     <div class="postBlock">
                         <div class="post">
                             <div class="postHeader">

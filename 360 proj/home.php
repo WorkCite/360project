@@ -135,7 +135,6 @@ if (isset($_POST['submit'])) {
         } else {
             echo 'Posted unsuccessfully!';
         }
-        mysqli_free_result($result);
         mysqli_close($connection);
     }
 }

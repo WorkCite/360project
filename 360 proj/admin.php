@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+if ($_SESSION == null) {
+    $_SESSION['isLogin'] = null;
+    $_SESSION['isAdmin'] = null;
+} else if ($_SESSION != null) {
+    echo "<script>console.log('session not null');</script>";
+}
+
+?>
     <head>
         <link rel="stylesheet" href="./css/admin.css">
         <title>Admin control</title>
     </head>
 
 <body>
-    
     <header>
-
         <div class="header">
             <form class="search">
                 <img class="searchIcon" src="./img/search_icon.png">
                 <input type="search" placeholder="Search" class="searchBox">
-            </form>
-        
+            </form>     
         <a class="active" href="login.php">Admin</a>
         <a class="home" href="home.php">Home</a>
     </div>

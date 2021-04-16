@@ -2,13 +2,14 @@
 <html lang="en">
 <?php
 session_start();
+
 if ($_SESSION == null) {
     $_SESSION['isLogin'] = null;
     $_SESSION['isAdmin'] = null;
 } else if ($_SESSION != null) {
     echo "<script>console.log('session not null');</script>";
 }
-$numpost=$_SESSION['numposts'];
+
 ?>
 
 <head>
@@ -82,7 +83,7 @@ $numpost=$_SESSION['numposts'];
     } else {
         //good connection, so do you thing
 
-        $sql = "select username from users;";
+        $sql = "select username from users order by username;";
         $results = mysqli_query($connection, $sql);
         //and fetch requsults
         echo  "<div class='table'>";
@@ -92,10 +93,18 @@ $numpost=$_SESSION['numposts'];
         while ($row = mysqli_fetch_assoc($results)) {
             foreach ($row as $e) {
                 //third input submit is the model for delete
+                $sql2="SELECT COUNT('postid') AS nums FROM post WHERE username=".$row['username'].";";
+                $postnum = mysqli_query($connection, $sql2);
+                if($postnum){
+                    $posts = mysqli_fetch_assoc($postnum);
+                    $num=$posts['nums'];
+                }
+                else{
+                    $num=0;
+                }
 
-                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php'> 0 </a>$numpost</td><td><form method='post' action='deleteuser.php'><input required name ='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
-
-                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php'> 0 </a>$numpost</td><td><form method='post' action='deleteuser.php'><input required name='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
+                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php?username=$e'> ".$num." </a></td><td><form method='post' action='deleteuser.php'><input required name ='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
+                
 
             }
         }

@@ -24,7 +24,6 @@ if ($_SESSION['isLogin'] != null) {
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
     <script type="text/javascript" src="js/home.js"></script>
-    <script type="text/javascript" src="js/home2.js"></script>
     <script language="javascript" type="text/javascript">
         function readURL(input) {
             var close = $('.closeImage');
@@ -187,7 +186,6 @@ if (isset($_POST['submit'])) {
         } else {
             echo 'Posted unsuccessfully!';
         }
-        
         mysqli_close($connection);
     }
 }
@@ -203,7 +201,7 @@ if (isset($_POST['submit'])) {
             </form>
             <?php
             if (isset($username)) {
-                echo "<script>console.log($username);</script>";
+                echo "<script>console.log('$username');</script>";
                 echo "            
                         <div class='dropdown'>
                         <button class='username' name='username'>Welcome, $username!</button>
@@ -212,7 +210,7 @@ if (isset($_POST['submit'])) {
                             <a href='#'>Posts</a>
                             <a href='login.php'>Logout</a>
                         </div>
-                    </div>
+                    </div>  
                     <a class='newpost'>New Post</a>";
             } else {
                 echo "<script>console.log('1username not get');</script>";

@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+if ($_SESSION == null) {
+    $_SESSION['isLogin'] = null;
+    $_SESSION['isAdmin'] = null;
+} else if ($_SESSION != null) {
+    echo "<script>console.log('session not null');</script>";
+}
+
+?>
     <head>
         <link rel="stylesheet" href="./css/admin.css">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -11,19 +21,21 @@
     </head>
 
 <body>
-    
-    <!--<header>
-
+    <header>
         <div class="header">
             <form class="search">
                 <img class="searchIcon" src="./img/search_icon.png">
                 <input type="search" placeholder="Search" class="searchBox">
+
+            </form>     
+            <a class="active" href="login.php">Admin</a>
+            <a class="home" href="home.php">Home</a>
             </form>
-        
-        
+
     </div>-->
 
     <!-- adduser html -->
+
     </header> 
     <div class="adduser">
     <form method="post" action="signup.php">
@@ -33,6 +45,7 @@
         
         <button  onclick="form.submit()">Add User</button>
     </form>
+
     </div>
     <!-- deleteuser html -->
     <div class="deleteuser">

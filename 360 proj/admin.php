@@ -92,7 +92,7 @@ if ($_SESSION == null) {
         while ($row = mysqli_fetch_assoc($results)) {
             foreach ($row as $e) {
                 //third input submit is the model for delete
-                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php'> 0 </a></td><td><form method='post' action='deleteuser.php'><input required type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
+                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php'> 0 </a></td><td><form method='post' action='deleteuser.php'><input required name ='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
             }
         }
         echo "</table>";

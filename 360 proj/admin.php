@@ -43,7 +43,13 @@ if ($_SESSION == null) {
     </form>
 
     </div>
-
+    <div class="deleteuser">
+    <form method="post" action="deleteuser.php">
+        <h4>You sure you want to delete this user permanently ? </h4>
+        <input   type="text" placeholder="type username again confirm" name="username" id="username">
+        <button  onclick="form.submit()">Delete User</button>
+    </form>
+    </div>
     <?php
     $host = "localhost";
     $database = "360project";
@@ -70,7 +76,7 @@ if ($_SESSION == null) {
         while($row = mysqli_fetch_assoc($results)){
             foreach($row as $e){
                
-                echo "<tr><td> " .$e. "</td><td> 0 </td><td><button id='userna'> &#10003; </button></td></tr>";
+                echo "<tr><td> " .$e. "</td><td><a href='posts.php'> 0 </a></td><td><input type='submit' name='btn_delete' value='&#10003;' /> Click to Confirm</button></td></tr>";
                
            }    
         }
@@ -78,13 +84,13 @@ if ($_SESSION == null) {
         echo "</div>";
 
         echo "<br/>";
-        echo "<button class='add'>Add User</button>";
+        
         mysqli_close($connection);
     }
 
 
     ?>
-    
+    <button class="add">Add User</button>
 </body>
 
 </html>

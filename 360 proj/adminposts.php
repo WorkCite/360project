@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    $_SESSION['numposts']=null;
     $host = "localhost";
     $database = "360project";
     $user = "webuser";
@@ -29,6 +31,7 @@
             echo '<a href="'.$rlink.'"> Return to user entry </a>';
           }
           // need to send $numpost to admin.php table column number of posts, can be done by Session
+          $_SESSION['numposts']=$numpost;
         }
         
         

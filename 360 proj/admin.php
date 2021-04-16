@@ -8,7 +8,7 @@ if ($_SESSION == null) {
 } else if ($_SESSION != null) {
     echo "<script>console.log('session not null');</script>";
 }
-
+$numpost=$_SESSION['numposts'];
 ?>
 
 <head>
@@ -93,9 +93,9 @@ if ($_SESSION == null) {
             foreach ($row as $e) {
                 //third input submit is the model for delete
 
-                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php'> 0 </a></td><td><form method='post' action='deleteuser.php'><input required name ='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
+                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php'> 0 </a>$numpost</td><td><form method='post' action='deleteuser.php'><input required name ='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
 
-                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php'> 0 </a></td><td><form method='post' action='deleteuser.php'><input required name='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
+                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php'> 0 </a>$numpost</td><td><form method='post' action='deleteuser.php'><input required name='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
 
             }
         }

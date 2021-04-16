@@ -221,8 +221,8 @@ footer {
   width:100%;
   background-color: white;
 }
-/* modal */
 
+/********** modal ***********/
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -244,6 +244,23 @@ footer {
   padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+.openComment{
+  text-align: center;
+  margin:1em 0 0 0;
+  background-color: rgb(51, 132, 255);
+  border-color: rgb(51, 132, 255);
+  border-radius: 10pt;
+  width: 90px;
+  height: 30px;
+  font-size: 12pt;
+  color: white;
+  display: block;
+}
+.openComment:hover {
+  cursor: pointer;
+  background-color: rgb(75, 146, 253);
+  border-color: rgb(75, 146, 253);
 }
 
 /* The Close Button */
@@ -323,23 +340,7 @@ footer {
 .inputContent:focus {
   outline: none;
 }
-.openComment{
-  text-align: center;
-  margin:1em 0 0 0;
-  background-color: rgb(51, 132, 255);
-  border-color: rgb(51, 132, 255);
-  border-radius: 10pt;
-  width: 90px;
-  height: 30px;
-  font-size: 12pt;
-  color: white;
-  display: block;
-}
-.openComment:hover {
-  cursor: pointer;
-  background-color: rgb(75, 146, 253);
-  border-color: rgb(75, 146, 253);
-}
+
 .formButton {
 
   display: block;

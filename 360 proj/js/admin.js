@@ -10,4 +10,7 @@ $(window).on('click',function(event){
       form.fadeOut(1000);
     }
   });
+
+
+
 });

@@ -47,7 +47,7 @@ if (isset($_POST['username'])) {
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
     $mail->Subject = 'Reset password link';
-    $mail->Body    = 'Hi,</br><p>Click the link below to reset your password</p></br><a href=">' . $link . '">'.$link.'</a>';
+    $mail->Body    = 'Hi,</br><p>Click the link below to reset your password</p></br><a href="' . $link . '">'.$link.'</a>';
 /*     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
  */    $mail->send();
     echo 'console.log("Message has been sent")';

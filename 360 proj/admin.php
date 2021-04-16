@@ -31,7 +31,11 @@ if ($_SESSION == null) {
             <a class="active" href="login.php">Admin</a>
             <a class="home" href="home.php">Home</a>
             </form>
-    </div>
+
+    </div>-->
+
+    <!-- adduser html -->
+
     </header> 
     <div class="adduser">
     <form method="post" action="signup.php">
@@ -43,6 +47,7 @@ if ($_SESSION == null) {
     </form>
 
     </div>
+    <!-- deleteuser html -->
     <div class="deleteuser">
     <form method="post" action="deleteuser.php">
         <h4>You sure you want to delete this user permanently ? </h4>
@@ -75,8 +80,8 @@ if ($_SESSION == null) {
         
         while($row = mysqli_fetch_assoc($results)){
             foreach($row as $e){
-               
-                echo "<tr><td> " .$e. "</td><td><a href='posts.php'> 0 </a></td><td><input type='submit' name='btn_delete' value='&#10003;' /> Click to Confirm</button></td></tr>";
+                //third input submit is the model for delete
+                echo "<tr><td> " .$e. "</td><td><a href='adminposts.php'> 0 </a></td><td><input type='submit' name='btn_delete' value='&#10003;' /> Click to Confirm</button></td></tr>";
                
            }    
         }
@@ -90,6 +95,7 @@ if ($_SESSION == null) {
 
 
     ?>
+    <!-- adduser button -->
     <button class="add">Add User</button>
 </body>
 

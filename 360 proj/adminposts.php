@@ -16,17 +16,21 @@
         if (isset($_SERVER['HTTP_REFERER']))
           $rlink = $_SERVER['HTTP_REFERER'];
 
-            
-        $sql = "SELECT post.content, post.img, post.date FROM post,user where post.username = user.username;";
+        //sql error
+        //$sql = "SELECT * from users where username = '".$_SESSION['user']."'";
+        $sql = 'SELECT p.content, p.img, p.date FROM post as p,user as u WHERE p.username = u.username;';
 
         $results = mysqli_query($connection, $sql);
         
-        if (true){
-        echo $results;
-        echo '<a href="'.$rlink.'"> Return to user entry </a>';
-        //mysqli_free_result($results);
+        while($row = mysqli_fetch_assoc($results)){
+          if($row != null){
+            echo $row;
+            $numpost +=1;
+            echo '<a href="'.$rlink.'"> Return to user entry </a>';
+          }
+          // need to send $numpost to admin.php table column number of posts, can be done by Session
         }
-
+        
         
         mysqli_close($connection);
     }

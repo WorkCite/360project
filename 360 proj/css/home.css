@@ -179,6 +179,10 @@ body {
   display: inline-block;
   vertical-align: -webkit-baseline-middle;
 }
+.idp{
+  color:rgb(56, 125, 204);
+  margin-left: 10px;
+}
 .commentBlock {
   margin: 0.5em 0.5em 0 0;
   border-radius: 10pt;

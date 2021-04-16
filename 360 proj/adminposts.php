@@ -17,24 +17,17 @@
           $rlink = $_SERVER['HTTP_REFERER'];
 
             
-        $sql = "SELECT * FROM post where username = '$username' OR email = '$email';";
+        $sql = "SELECT post.content, post.img, post.date FROM post,user where post.username = user.username;";
 
         $results = mysqli_query($connection, $sql);
-
-        if ($row = mysqli_fetch_assoc($results)){
-        echo "<p>User already exists with this name and/or email</p>";
+        
+        if (true){
+        echo $results;
         echo '<a href="'.$rlink.'"> Return to user entry </a>';
-        }else{
-            $sql1 = "INSERT INTO users (username, email, password) values ('$username','$email',md5('$password'));";
-            $results1 = mysqli_query($connection, $sql1);
-            if($results1==True){
-                echo "<p> $username account has been created</p>";
-                echo '<a href="'.$rlink.'"> Return to user entry </a>';
-            }
-            
+        //mysqli_free_result($results);
         }
 
-        mysqli_free_result($results);
+        
         mysqli_close($connection);
     }
 

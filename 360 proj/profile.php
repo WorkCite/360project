@@ -87,10 +87,48 @@ if($error != null)
 <head>
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/profile.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script language="JavaScript" type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="js/prfile.js"></script>
     <title>My Discussion Forum Website</title>
 </head>
 
 <body>
+    <!--about php-->
+<?php 
+$post = false;
+if (isset($_POST['aboutbtn'])) {
+    $host = "localhost";
+    $database = "360project";
+    $user = "webuser";
+    $password = "P@ssw0rd";
+
+    $connection = mysqli_connect($host, $user, $password, $database);
+
+    $error = mysqli_connect_error();
+    if ($error != null) {
+        $output = "<p>Unable to connect to database!</p>";
+        die($error);
+    } else {
+
+        //  content
+        if (isset($_POST['aboutInput'])) {
+            $content = $_POST['aboutInput'];
+        }
+        $sqlcom = "INSERT INTO user(content) VALUES ('$content') WHERE username = '$username';";
+        $resultcom = mysqli_query($connection, $sqlcom);
+        if ($resultcom) {
+            echo 'Posted successfully!';
+            $post = true;
+        } else {
+            echo 'Posted unsuccessfully!';
+        }
+        mysqli_close($connection);
+    }
+}
+?>
 <header>
         <div class="header">
             <form class="search">
@@ -156,12 +194,13 @@ if($error != null)
             <div class="item6">
                 <h2 style="margin-left: 10%;">About</h2>
                 <div class="intro"> 
-                    <p style="padding: 5px;">Text messaging, or texting, is the act of composing and sending electronic messages, typically consisting of alphabetic and numeric characters, between two or more users of mobile devices, desktops/laptops, or other type of compatible computer. Text messages may be sent over a cellular network, or may also be sent via an Internet connection.</p>
+                    <p style="padding: 5px;">Introduce yourself to everyone!</p>
                 </div>
+                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">modify</button>
             </div>
             <div class="item7">
                 <h2 style="margin-left: 10%;">Recent Photo</h2>
-                <div class="i7-content">
+                <div class="i7-content"> 
                     <img class="postimg" src="./img/1.gif">
                     <img class="postimg" src="./img/1.gif">
                     <img class="postimg" src="./img/1.gif">

@@ -32,7 +32,13 @@
         <button  onclick="form.submit()">Add User</button>
     </form>
     </div>
-
+    <div class="deleteuser">
+    <form method="post" action="deleteuser.php">
+        <h4>You sure you want to delete this user permanently ? </h4>
+        <input   type="text" placeholder="type username again confirm" name="username" id="username">
+        <button  onclick="form.submit()">Delete User</button>
+    </form>
+    </div>
     <?php
     $host = "localhost";
     $database = "360project";
@@ -59,7 +65,7 @@
         while($row = mysqli_fetch_assoc($results)){
             foreach($row as $e){
                
-                echo "<tr><td> " .$e. "</td><td> 0 </td><td><button id='userna'> &#10003; </button></td></tr>";
+                echo "<tr><td> " .$e. "</td><td> 0 </td><td><button id='.$e.'> &#10003; </button></td></tr>";
                
            }    
         }

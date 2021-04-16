@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
-
+<?php
+session_start();
+if ($_SESSION != null) {
+$email = $_SESSION['email'];
+}
+?>
 <head>
 <meta charset="UTF-8">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -29,11 +34,13 @@ if (isset($_POST['button'])) { //check if form was submitted
   if (empty($_POST["new"])) {
     $Err1 = "Enter an email";
   } else {
+    // new
     $nw = $_POST["new"];
   }
   if (empty($_POST["repeat"])) {
     $Err2 = "Email and password not found";
   } else {
+    // repeat
     $rp = $_POST["repeat"];
   }
   if ($nw != $rp) {
@@ -54,5 +61,33 @@ if (isset($_POST['button'])) { //check if form was submitted
     <button name="button" type="submit">Confirm</button>
   </form>
 </body>
+<?php
+if(isset($_POST['button'])){
+$host = "localhost";
+$database = "360project";
+$user = "webuser";
+$password = "P@ssw0rd";
 
+$connection = mysqli_connect($host, $user, $password, $database);
+
+$error = mysqli_connect_error();
+if ($error != null) {
+    $output = "<p>Unable to connect to database!</p>";
+    die($error);
+} else {
+    $temp = md5($nw);
+    $sql = "UPDATE users SET password = '$temp' WHERE email = '$email';";
+    $result = mysqli_query($connection, $sql);
+    if ($result) {
+        echo '<script>console.log("Updated successfully!")</script>';
+        echo "<script> {window.alert('Your password has been reset, go back to login page.');location.href='login.php'} </script>";
+    } else {
+        echo '<script>console.log("Updated unsuccessfully!")</script>';
+    }
+    mysqli_free_result($result);
+    mysqli_close($connection);
+     $_SESSION['email']=null;
+   }
+}
+?>
 </html>

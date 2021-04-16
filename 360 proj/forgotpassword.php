@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+$_SESSION['email'] =null;
 
+?>
 <head>
   <title>ForgotPassword</title>
 </head>
@@ -8,7 +12,7 @@
 <body>
   <form method="POST"class="reset">
     <label class="address">Your email address:</label>
-    <input name="username" required placeholder="sample@sample.com" oninvalid="this.setCustomValidity('Enter your email address')" oninput="this.setCustomValidity('')" type="text">
+    <input name="email" required placeholder="sample@sample.com" oninvalid="this.setCustomValidity('Enter your email address')" oninput="this.setCustomValidity('')" type="text">
     <button name="button" type="submit">Confirm</button>
   </form>
 </body>
@@ -24,9 +28,9 @@ require 'config/PHPMailer-master/src/PHPMailer.php';
 require 'config/PHPMailer-master/src/SMTP.php';
 
 $mail = new PHPMailer(true);
-if (isset($_POST['username'])) {
-  $email = $_POST['username'];
-  
+if (isset($_POST['email'])) {
+  $_SESSION['email'] =$_POST['email'];
+
 
   $link = 'http://localhost/360project/360%20proj/reset.php';
 
@@ -42,7 +46,7 @@ if (isset($_POST['username'])) {
 
     //Recipient
     $mail->setFrom('wrc9817@gmail.com', 'Eric');
-    $mail->addAddress($email,$username);     //Add a recipient
+    $mail->addAddress($_SESSION['email']);     //Add a recipient
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
@@ -50,7 +54,7 @@ if (isset($_POST['username'])) {
     $mail->Body    = 'Hi,</br><p>Click the link below to reset your password</p></br><a href="' . $link . '">'.$link.'</a>';
 /*     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
  */    $mail->send();
-    echo 'console.log("Message has been sent")';
+    echo '<script>console.log("Message has been sent")</script>';
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
   }

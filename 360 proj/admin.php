@@ -65,7 +65,7 @@
         while($row = mysqli_fetch_assoc($results)){
             foreach($row as $e){
                
-                echo "<tr><td> " .$e. "</td><td> 0 </td><td><button id='.$e.'> &#10003; </button></td></tr>";
+                echo "<tr><td> " .$e. "</td><td><a href='posts.php'> 0 </a></td><td><input type='submit' name='btn_delete' value='&#10003;' /> Click to Confirm</button></td></tr>";
                
            }    
         }
@@ -73,13 +73,13 @@
         echo "</div>";
 
         echo "<br/>";
-        echo "<button class='add'>Add User</button>";
+        
         mysqli_close($connection);
     }
 
 
     ?>
-    
+    <button class="add">Add User</button>
 </body>
 
 </html>

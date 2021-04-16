@@ -22,9 +22,10 @@
         
         $results = mysqli_query($connection, $sql);
 
-        if ($row = mysqli_fetch_assoc($results)){
+        if ($results){
         echo "<p>User is being deleted</p>";
         echo '<a href="'.$rlink.'"> Return to user entry </a>';
+        
         }else{
             
             echo "<p> $username account can't be deleted</p>";
@@ -32,7 +33,7 @@
             
         }
 
-        mysqli_free_result($results);
+        
         
         mysqli_close($connection);
     }

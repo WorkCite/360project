@@ -17,7 +17,7 @@
         else
         {
             //good connection, so do you thing
-            $sql="SELECT content,img,date,username FROM post WHERE tag='$id' ORDER BY DESC;";
+            $sql="SELECT content,img,date,username FROM post WHERE tag='$tag' ORDER BY DESC;";
             $results = mysqli_query($connection, $sql);
             //and fetch requsults
             while($row = mysqli_fetch_assoc($results)){

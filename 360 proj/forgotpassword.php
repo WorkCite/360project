@@ -6,13 +6,16 @@ $_SESSION['email'] =null;
 
 ?>
 <head>
+<meta charset="utf-8">
+
+<link rel="stylesheet" href="./css/forgotpassword.css">
   <title>ForgotPassword</title>
 </head>
 
 <body>
   <form method="POST"class="reset">
-    <label class="address">Your email address:</label>
-    <input name="email" required placeholder="sample@sample.com" oninvalid="this.setCustomValidity('Enter your email address')" oninput="this.setCustomValidity('')" type="text">
+<!--     <label class="address">Your email address:</label>
+ -->    <input name="email" required placeholder="Your email address" oninvalid="this.setCustomValidity('Enter your email address')" oninput="this.setCustomValidity('')" type="text"></br>
     <button name="button" type="submit">Confirm</button>
   </form>
 </body>

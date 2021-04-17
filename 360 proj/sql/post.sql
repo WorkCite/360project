@@ -10,7 +10,7 @@ CREATE TABLE `post` (
 
 
 INSERT INTO `post` (`postid`, `content`, `img`,`date`,`username`,`tag`) VALUES
-('0', 'hi', 'null','11:11:11','test','none');
+('0', 'hi', 'null','11:11:11','test','music');
 
 INSERT INTO `post` (`postid`, `content`, `img`,`date`,`username`,`tag`) VALUES
 ('2', 'hi hi', 'null','11:11:22','admin','music');

@@ -335,10 +335,10 @@ if (isset($_POST['submit'])) {
                         {
                             //good connection, so do you thing
                             if($type!=null&&$type!='null'){
-                            $psql = "SELECT * FROM post WHERE tag = '".$type."';";
+                            $psql = "SELECT * FROM post WHERE tag = '".$type."' ORDER BY date DESC;";
                         }
                             else{
-                                $psql = "SELECT * FROM post ;";
+                                $psql = "SELECT * FROM post ORDER BY date DESC;";
                             }
                             $presults = mysqli_query($connection, $psql);
                             //and fetch requsults

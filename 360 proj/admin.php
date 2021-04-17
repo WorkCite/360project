@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 session_start();
+
 if ($_SESSION == null) {
     $_SESSION['isLogin'] = null;
     $_SESSION['isAdmin'] = null;
@@ -82,21 +83,25 @@ if ($_SESSION == null) {
     } else {
         //good connection, so do you thing
 
-        $sql = "select username from users;";
+        $sql = "select * from users order by username;";
         $results = mysqli_query($connection, $sql);
         //and fetch requsults
         echo  "<div class='table'>";
         echo "<table>";
-        echo "<tr><th>User</th><th>Number of Posts</th><th>Delete User</th></tr>";
+        echo "<tr><th>User</th><th>email</th><th>Number of Posts</th><th>Delete User</th></tr>";
 
         while ($row = mysqli_fetch_assoc($results)) {
-            foreach ($row as $e) {
                 //third input submit is the model for delete
-
-                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php'> 0 </a></td><td><form method='post' action='deleteuser.php'><input required name ='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
-
-                echo "<tr><td> " . $e . "</td><td><a href='adminposts.php'> 0 </a></td><td><form method='post' action='deleteuser.php'><input required name='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
-
+                $sql2="SELECT COUNT('postid') AS nums FROM post WHERE username=".$row['username'].";";
+                $postnum = mysqli_query($connection, $sql2);
+                if($postnum){
+                    $posts = mysqli_fetch_assoc($postnum);
+                    $num=$posts['nums'];
+                }
+                else{
+                    $num=0;
+                }
+                echo "<tr><td> " . $row['username'] . "</td><td>" . $row['email'] . "</td><td><a href='adminposts.php?username=" . $row['username'] . "'> ".$num." </a></td><td><form method='post' action='deleteuser.php'><input required name ='username' type = 'text' placeholder='Type username'><input type='submit' name='btn_delete' value='&#10003;' /></form></td></tr>";
             }
         }
         echo "</table>";
@@ -105,7 +110,7 @@ if ($_SESSION == null) {
         echo "<br/>";
 
         mysqli_close($connection);
-    }
+    
 
 
     ?>

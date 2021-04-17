@@ -129,8 +129,8 @@ if (isset($_POST['innerSubmit'])) {
         } else {
             $username = 'test';
         }
-
         $sqlcom = "INSERT INTO comment(commentid,content,date,username,postid) VALUES (0,'$contentcom','$datecom','$username','$temppid');";//只能传实时
+
         $resultcom = mysqli_query($connection, $sqlcom);
         if ($resultcom) {
             echo 'Posted successfully!';
@@ -202,21 +202,19 @@ if (isset($_POST['psubmit'])) {
         } else {
             $img = null;
         }
-
         // username
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
         } else {
             $username = 'test';
         }
-
         $sql = "INSERT INTO post(postid,content,img,date,username) VALUES (0,'$content','$img','$date','$username');";
         $result = mysqli_query($connection, $sql);
         if ($result) {
-            echo 'Posted successfully!';
+            echo "<script> {window.alert('Post successfully.');location.href='home.php'} </script>";
             $posted = true;
         } else {
-            echo 'Posted unsuccessfully!';
+            echo "<script> {window.alert('Post unsuccessfully.');location.href='home.php'} </script>";
         }
         /*$sqlp = "SELECT postid FROM post WHERE content = '$content' AND username = '$username';";
         $resultp = mysqli_query($connection, $sqlp);

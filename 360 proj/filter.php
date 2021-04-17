@@ -19,6 +19,7 @@
             $sql="SELECT content,img,date,username FROM post WHERE tag=".$tag." ORDER BY DESC;";
             $results = mysqli_query($connection, $sql);
             //and fetch requsults
+            if($results != null){
             while($row = mysqli_fetch_assoc($results)){
                 if($row != null){
                     $name = $row['username'];
@@ -59,6 +60,7 @@
 }
 mysqli_free_result($results);
 mysqli_close($connection); 
+}
 }
   }
 ?>

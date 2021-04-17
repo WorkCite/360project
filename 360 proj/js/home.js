@@ -14,6 +14,7 @@ $(function () {
     modal1.insertBefore('body'); */
     if ($(event.target).parents(".postBlock").length) {
       // modal parag
+      var author =$(event.target).parents(".postBlock").find(".author");
       var p = $(".paragraph");
       // post block content
       var str = $(event.target).parents(".postBlock").find(".content").text();
@@ -24,6 +25,7 @@ $(function () {
       content.css({
         color: "black",
       });
+      p.before(author.clone());
       p.append(content);
       p.append(str2.clone());
       modal.fadeIn(500);
@@ -33,9 +35,11 @@ $(function () {
   span.on("click", function () {
     modal.fadeOut(500);
 /*     $('.openComment').remove();
- */    $('.commentForm').remove();
+ */    
+    $('.commentForm').remove();
     $(".paragraph").find("p").remove();
     $(".paragraph").find("img").remove(); 
+    $(".modal").find(".author").remove(); 
     $(".openComment").css('display','block');
 
   });
@@ -44,7 +48,9 @@ $(function () {
     if ($(event.target).is(modal)) {
       modal.fadeOut(500);
 /*     $('.openComment').remove();
- */    $('.commentForm').remove();
+ */    
+    $(".modal").find(".author").remove(); 
+    $('.commentForm').remove();
     $(".paragraph").find("p").remove();
     $(".paragraph").find("img").remove(); 
     $(".openComment").css('display','block');
@@ -103,5 +109,6 @@ $(function () {
     
   });
   /* newcomment */
+
 
 });

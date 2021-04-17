@@ -300,11 +300,11 @@ if (isset($_POST['submit'])) {
             <h1>Posts</h1>
         </div>
         <div id="myBtnContainer">
-            <button class="btn" value="none"onclick="foo(this)"> Show all</button>
-            <button class="btn" value="music"onclick="foo(this)"> Music</button>
-            <button class="btn" value="sports"onclick="foo(this)"> Sports</button>
-            <button class="btn" value="art"onclick="foo(this)"> Art</button>
-            <button class="btn" value="game" onclick="foo(this)"> Game</button>
+            <button class="btn" name="none"value="none"onclick="foo(this)"> Show all</button>
+            <button class="btn" name="music"value="music"onclick="foo(this)"> Music</button>
+            <button class="btn" name="sports"value="sports"onclick="foo(this)"> Sports</button>
+            <button class="btn" name="art"value="art"onclick="foo(this)"> Art</button>
+            <button class="btn" name="game"value="game" onclick="foo(this)"> Game</button>
         </div>
         <div class="popularposts">
             <div class="left">

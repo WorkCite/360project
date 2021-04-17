@@ -3,6 +3,7 @@ CREATE TABLE `comment` (
     `content` varchar(255) NOT NULL,
     `date` time NOT NULL,
     `username` varchar(255) NOT NULL,
+    `postid` INT,
     PRIMARY KEY (`commentid`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

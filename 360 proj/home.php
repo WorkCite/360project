@@ -80,6 +80,48 @@ if ($_SESSION['isLogin'] != null) {
         <div class="innerComment">
             <button name="submit" type="submit" class="openComment">Comment</button>
         </div>
+        <div class="commentlist">
+            <?php 
+
+            //$pid = $_SESSION['postid'];
+            //$pid = $_SESSION['postid'];
+            //echo "<script>console.log('pid'+'$pid');</script>";
+            //$q = intval($_POST['q']);
+            //echo "<script>console.log('pid: '+'$q');</script>";
+            $host = "localhost";
+            $database = "360project";
+            $user = "webuser";
+            $password0 = "P@ssw0rd";
+            $connection = mysqli_connect($host, $user, $password0, $database);
+            $error = mysqli_connect_error();
+            $comcontent = null;
+            if($error != null)
+                {
+                $output = "<p>Unable to connect to database!</p>";
+                exit($output);
+                }
+                else
+                {
+                    //good connection, so do you thing
+                    $sql = "select content, date, username from comment;";
+                    $results = mysqli_query($connection, $sql);
+                    //and fetch requsults
+                    while( $row = mysqli_fetch_assoc($results)){
+                        if($row != null){
+                            echo "<div class='eachcomment'>";
+                            echo "<p style='display: inline-block'>".$row['username']."</p>";
+                            echo "<p style='display: inline-block; margin-left:20px'>".$row['date']."</p>";
+                            echo "<p>".$row['content']."</p>";
+                            echo "<hr>";
+                            echo "</div>";
+                        }
+                    }
+                    
+                    mysqli_close($connection);
+                    
+                }
+            ?>
+        </div>
     </div>
 </div>
 <?php
@@ -89,7 +131,7 @@ if (isset($_POST['innerSubmit'])) {
     $database = "360project";
     $user = "webuser";
     $password = "P@ssw0rd";
-
+    $temppid = $_SESSION['postid'];
     $connection = mysqli_connect($host, $user, $password, $database);
 
     $error = mysqli_connect_error();
@@ -107,22 +149,14 @@ if (isset($_POST['innerSubmit'])) {
         date_default_timezone_set('America/Los_Angeles');
         $datecom = date('Y-m-d h:i:s a');
 
-        // img
-        /*   if (isset($_POST['submit'])) {
-            $form_data = $_FILES['fileToUpload']['tmp_name'];
-            // img binary data
-            $img = addslashes(fread(fopen($form_data, "r"), filesize($form_data)));
-        } else {
-            $img = null;
-        }*/
-
         // username
         if (isset($_SESSION['username'])) {
             $username = $_SESSION['username'];
         } else {
             $username = 'test';
         }
-        $sqlcom = "INSERT INTO comment(commentid,content,date,username) VALUES (0,'$contentcom','$datecom','$username');";
+        $sqlcom = "INSERT INTO comment(commentid,content,date,username,postid) VALUES (0,'$contentcom','$datecom','$username','$temppid');";//只能传实时
+
         $resultcom = mysqli_query($connection, $sqlcom);
         if ($resultcom) {
             echo 'Posted successfully!';
@@ -277,7 +311,138 @@ if (isset($_POST['submit'])) {
                 <!-- series of blocks -->
                 <div class="posts">
                     <!-- single block -->
-                    <div class="postBlock">
+                    <?php
+                    if ($posted) {
+                        date_default_timezone_set('America/Los_Angeles');
+                        $postedTime = date('Y-m-d h:i:s a');
+                        $diff = abs(strtotime($postedTime) - strtotime($date));
+                        $years   = floor($diff / (365 * 60 * 60 * 24));
+                        $months  = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+                        $days    = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
+                        $hours   = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24) / (60 * 60));
+                        $minutes  = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60) / 60);
+                        $seconds = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60 - $minuts * 60));
+                        /*echo '<div class="postBlock">
+                        <div class="post">
+                            <div class="postHeader">
+                                <div class="authorIcon">
+                                    <img width="20pt" height="20pt">
+                                </div>
+                                <div class="author"><p>' . $username . '</p></div>
+                                <div class="postTime"><p>&middot; ';*/
+                        if ($years >= 1) {
+                            echo $years;
+                        }
+                        if ($years < 1 && $months >= 1) {
+                            echo $months;
+                        }
+                        if ($months < 1 && $days >= 1) {
+                            echo $days;
+                        }
+                        if ($days < 1 && $hours >= 1) {
+                            echo $hours;
+                        }
+                        if ($hours < 1 && $minutes >= 1) {
+                            echo $minutes;
+                        }
+                        if ($minutes < 1 && $seconds >= 1) {
+                            echo $seconds;
+                        }
+                        /* pull $img from DB and $img should be converted to src */
+                        /* TODO 
+                        echo 'ago</p>
+                    </div>
+                        </div>
+                            <div class="content">
+                                <p>' . $content . '</p>
+                            </div>
+                            <div class="image">
+                                <img class="img" src="img/1.gif">
+                            </div>
+                        <div class="commentBlock">
+                            <div class="commentIcon">
+                                <img width="20pt" height="20pt" src="img/commentIcon.png">
+                            </div>
+                        <div class="comments">
+                            <p>Comments</p>
+                        </div>
+                    </div>
+                </div>
+            </div>';*/
+                    }
+                    ?>
+                    <?php 
+                    //$pid = $_SESSION['postid'];
+                    //echo "<script>console.log('pid'+'$pid');</script>";
+                    $host = "localhost";
+                    $database = "360project";
+                    $user = "webuser";
+                    $password0 = "P@ssw0rd";
+                    $connection = mysqli_connect($host, $user, $password0, $database);
+                    $error = mysqli_connect_error();
+                    $pname = null;
+                    $pcon = null;
+                    $pdate = null;
+                    $ptempid = null;
+                    $_SESSION['postid']=null;
+                    if($error != null)
+                        {
+                        $output = "<p>Unable to connect to database!</p>";
+                        exit($output);
+                        }
+                        else
+                        {
+                            //good connection, so do you thing
+                            $psql = "SELECT*FROM post;";
+                            $presults = mysqli_query($connection, $psql);
+                            //and fetch requsults
+                            while($prow = mysqli_fetch_assoc($presults)){
+                                if($prow != null){
+                                    $pname = $prow['username'];
+                                    $pdate = $prow['date'];
+                                    $pcon  = $prow['content'];
+                                    $ptempid = $prow['postid'];
+                                    $_SESSION['postid'] = $ptempid;
+                                    echo ' 
+                                    <div class="postBlock">
+                                    <div class="post">
+                                        <div class="postHeader">
+                                            <div class="authorIcon">
+                                                <img width="20pt" height="20pt">
+                                            </div>
+                                            <div class="author">
+                                                <p>'.$pname.'</p>
+                                            </div>
+                                            <div class="postTime">
+                                                <p>&middot; '.$pdate.'</p>
+                                            </div>
+                                            <div class="postTime">
+                                                <p class="idp">'.$ptempid.'</p>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <p>'.$pcon.'</p>
+                                        </div>
+                                        <div class="image">
+                                        <img class="postimg" src="img/picture.png">
+                                        </div>
+                                        <div class="commentBlock">
+                                            <div class="commentIcon">
+                                                <img width="20pt" height="20pt" src="img/commentIcon.png">
+                                            </div>
+                                            <div class="comments">
+                                                <p>Comments</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>';
+                                }
+                            }
+                            mysqli_free_result($presults);
+                            mysqli_close($connection); 
+                        }
+                    ?>
+                   <!-- <div class="postBlock">
                         <div class="post">
                             <div class="postHeader">
                                 <div class="author">
@@ -363,7 +528,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
                     <!--                     <div class="post">
                         <div class="postTitle">
                             <h2>post1</h2>

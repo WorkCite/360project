@@ -407,9 +407,6 @@ if (isset($_POST['submit'])) {
                                     <div class="postBlock">
                                     <div class="post">
                                         <div class="postHeader">
-                                            <div class="authorIcon">
-                                                <img width="20pt" height="20pt">
-                                            </div>
                                             <div class="author">
                                                 <p>'.$pname.'</p>
                                             </div>

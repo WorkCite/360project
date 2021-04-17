@@ -78,14 +78,15 @@ if ($_SESSION['isLogin'] != null) {
                 else
                 {
                     //good connection, so do you thing
-                    $sql = "select content, date from comment;";
+                    $sql = "select content, date, username from comment;";
                     $results = mysqli_query($connection, $sql);
                     //and fetch requsults
                     while( $row = mysqli_fetch_assoc($results)){
                         if($row != null){
                             echo "<div class='eachcomment'>";
-                            echo "<p style='display: inline-block'>".$row['content']."</p>";
-                            echo "<p style='display: inline-block'>".$row['date']."</p>";
+                            echo "<p style='display: inline-block'>".$row['username']."</p>";
+                            echo "<p style='display: inline-block; margin-left:20px'>".$row['date']."</p>";
+                            echo "<p>".$row['content']."</p>";
                             echo "<hr>";
                             echo "</div>";
                         }

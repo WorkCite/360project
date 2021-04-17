@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <?php
 session_start();
+ob_start();
 if ($_SESSION == null) {
     $_SESSION['isLogin'] = null;
     $_SESSION['isAdmin'] = null;
@@ -303,94 +305,81 @@ if (isset($_POST['submit'])) {
                 </div>
             </div>';
                     }
+                    
                     ?>
-                    <div class="postBlock">
-                        <div class="post">
-                            <div class="postHeader">
-                                <div class="authorIcon">
-                                    <img width="20pt" height="20pt">
-                                </div>
-                                <div class="author">
-                                    <p>Author</p>
-                                </div>
-                                <div class="postTime">
-                                    <p>&middot; Posted (time) ago</p>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <p>This is a post.</p>
-                            </div>
-                            <div class="image">
-                                <img class="img" src="img/1.gif">
-                            </div>
-                            <div class="commentBlock">
-                                <div class="commentIcon">
-                                    <img width="20pt" height="20pt" src="img/commentIcon.png">
-                                </div>
-                                <div class="comments">
-                                    <p>Comments</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="postBlock">
-                        <div class="post">
-                            <div class="postHeader">
-                                <div class="authorIcon">
-                                    <img width="20pt" height="20pt">
-                                </div>
-                                <div class="author">
-                                    <p>Author2</p>
-                                </div>
-                                <div class="postTime">
-                                    <p>&middot; Posted (time) ago</p>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <p>This is a post2.</p>
-                            </div>
-                            <div class="image">
-                                <img class="img" src="img/1.gif">
-                            </div>
-                            <div class="commentBlock">
-                                <div class="commentIcon">
-                                    <img width="20pt" height="20pt" src="img/commentIcon.png">
-                                </div>
-                                <div class="comments">
-                                    <p>Comments</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="postBlock">
-                        <div class="post">
-                            <div class="postHeader">
-                                <div class="authorIcon">
-                                    <img width="20pt" height="20pt">
-                                </div>
-                                <div class="author">
-                                    <p>Author3</p>
-                                </div>
-                                <div class="postTime">
-                                    <p>&middot; Posted (time)</p>
-                                </div>
-                            </div>
-                            <div class="content">
-                                <p>This is a post3.</p>
-                            </div>
-                            <div class="image">
-                                <img class="img" src="img/1.gif">
-                            </div>
-                            <div class="commentBlock">
-                                <div class="commentIcon">
-                                    <img width="20pt" height="20pt" src="img/commentIcon.png">
-                                </div>
-                                <div class="comments">
-                                    <p>Comments</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php 
+                    
+                     //$pid = $_SESSION['postid'];
+                     //echo "<script>console.log('pid'+'$pid');</script>";
+                     $host = "localhost";
+                     $database = "360project";
+                     $user = "webuser";
+                     $password0 = "P@ssw0rd";
+                     $connection = mysqli_connect($host, $user, $password0, $database);
+                     $error = mysqli_connect_error();
+                     $pname = null;
+                     $pcon = null;
+                     $pdate = null;
+                     $ptempid = null;
+                     $_SESSION['postid']=null;
+                     if($error != null)
+                         {
+                         $output = "<p>Unable to connect to database!</p>";
+                         exit($output);
+                         }
+                         else
+                         {
+                             //good connection, so do you thing
+                             $psql = "SELECT*FROM post;";
+                             $presults = mysqli_query($connection, $psql);
+                             //and fetch requsults
+                             while($prow = mysqli_fetch_assoc($presults)){
+                                 if($prow != null){
+                                     $pname = $prow['username'];
+                                     $pdate = $prow['date'];
+                                     $pcon  = $prow['content'];
+                                     $ptempid = $prow['postid'];
+                                     $_SESSION['postid'] = $ptempid;
+                                     echo ' 
+                                     <div class="postBlock">
+                                     <div class="post">
+                                         <div class="postHeader">
+                                             <div class="authorIcon">
+                                                 <img width="20pt" height="20pt">
+                                             </div>
+                                             <div class="author">
+                                                 <p>'.$pname.'</p>
+                                             </div>
+                                             <div class="postTime">
+                                                 <p>&middot; '.$pdate.'</p>
+                                             </div>
+                                             <div class="postTime">
+                                                 <p class="idp">'.$ptempid.'</p>
+                                             </div>
+                                         </div>
+                                         <div class="content">
+                                             <p>'.$pcon.'</p>
+                                         </div>
+                                         <div class="image">
+                                             <img class="img" src="img/1.gif">
+                                         </div>
+                                         <div class="commentBlock">
+                                             <div class="commentIcon">
+                                                 <img width="20pt" height="20pt" src="img/commentIcon.png">
+                                             </div>
+                                             <div class="comments">
+                                                 <p>Comments</p>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>';
+                                 }
+                             }
+                             mysqli_free_result($presults);
+                             mysqli_close($connection); 
+                         }
+                     ?>
+                    
                     <!--                     <div class="post">
                         <div class="postTitle">
                             <h2>post1</h2>
@@ -429,8 +418,10 @@ if (isset($_POST['submit'])) {
     </div>
 
     <footer>
+
+
         <div class="copyright">
-            <p>Copyright © WorkCite Github student group</p>
+<p>Copyright © WorkCite Github student group</p>
         </div>
     </footer>
 </body>

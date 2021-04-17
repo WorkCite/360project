@@ -42,6 +42,31 @@ if ($_SESSION['isLogin'] != null) {
                 reader.readAsDataURL(input.files[0]);
             }
         }
+        var xmlHttp;  
+		function createXMLHttpRequest(){ 
+			if(window.ActiveXObject){  
+				xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");  
+			}  
+			else if(window.XMLHttpRequest){  
+				xmlHttp = new XMLHttpRequest();  
+			}  
+		}  
+        function foo(n){  
+			createXMLHttpRequest();  
+			var url="filter.php";  
+			xmlHttp.open("POST",url,true); 
+			xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+			xmlHttp.onreadystatechange = callback;  
+			xmlHttp.send("action=" + n.value); 
+		}
+        function callback(){  
+			if(xmlHttp.readyState == 4){  
+				if(xmlHttp.status == 200){  
+					alert(xmlHttp.responseText);
+          location.reload();   
+				}  
+			}  
+		}
     </script>
     <title>My Discussion Forum Website</title>
 </head>
@@ -52,12 +77,12 @@ if ($_SESSION['isLogin'] != null) {
         <span class="close">&times;</span>
         <div class="paragraph">
         </div>
-        <div class = "innerComment">
-            <button name="submit" type="submit"class="openComment">Comment</button>
+        <div class="innerComment">
+            <button name="submit" type="submit" class="openComment">Comment</button>
         </div>
     </div>
 </div>
-<?php 
+<?php
 $postcom = false;
 if (isset($_POST['innerSubmit'])) {
     $host = "localhost";
@@ -83,7 +108,7 @@ if (isset($_POST['innerSubmit'])) {
         $datecom = date('Y-m-d h:i:s a');
 
         // img
-     /*   if (isset($_POST['submit'])) {
+        /*   if (isset($_POST['submit'])) {
             $form_data = $_FILES['fileToUpload']['tmp_name'];
             // img binary data
             $img = addslashes(fread(fopen($form_data, "r"), filesize($form_data)));
@@ -116,10 +141,15 @@ if (isset($_POST['innerSubmit'])) {
             <span class="closeform">&times;</span>
         </div>
         <div class="formlayout">
-            <!--             <div class="titleBlock">
-                <label class="title">Title</label>
-                <input class="inputTitle" type="text"></br>
-            </div> -->
+            <select name="tags">
+                <option name="noption"value="" disabled selected hidden>Select Your Tag</option>
+                <option value="Music">Music</option>
+                <option value="Sports">Sports</option>
+                <option value="Art">Art</option>
+                <option value="Game">Game</option>
+                <option value="None">None</option>
+
+            </select>
             <textarea placeholder="Add description" oninvalid="this.setCustomValidity('Enter your description')" oninput="this.setCustomValidity('')" class="inputContent" name="inputContent" required></textarea>
             <div class="uploadedImageBlock">
                 <span class="closeImage">&times;</span>
@@ -151,7 +181,10 @@ if (isset($_POST['submit'])) {
         $output = "<p>Unable to connect to database!</p>";
         die($error);
     } else {
-
+        // tag
+        if(isset($_POST['tags'])){
+            $tag = $_POST['tags'];
+        }
         //  content
         if (isset($_POST['inputContent'])) {
             $content = $_POST['inputContent'];
@@ -175,7 +208,7 @@ if (isset($_POST['submit'])) {
         } else {
             $username = 'test';
         }
-        $sql = "INSERT INTO post(postid,content,img,date,username) VALUES (0,'$content','$img','$date','$username');";
+        $sql = "INSERT INTO post(postid,content,img,date,username,tag) VALUES (0,'$content','$img','$date','$username','$tag');";
         $result = mysqli_query($connection, $sql);
         if ($result) {
             echo "<script> {window.alert('Post successfully.');location.href='home.php'} </script>";
@@ -233,88 +266,28 @@ if (isset($_POST['submit'])) {
             <h1>Posts</h1>
         </div>
         <div id="myBtnContainer">
-            <button class="btn " onclick="filterSelection('all')"> Show all</button>
-            <button class="btn " onclick="filterSelection('music')"> Music</button>
-            <button class="btn " onclick="filterSelection('sports')"> Sports</button>
-            <button class="btn " onclick="filterSelection('art')"> Art</button>
-            <button class="btn " onclick="filterSelection('game')"> Game</button>
+            <button class="btn" onclick="foo(this)"> Show all</button>
+            <button class="btn" onclick="foo(this)"> Music</button>
+            <button class="btn" onclick="foo(this)"> Sports</button>
+            <button class="btn" onclick="foo(this)"> Art</button>
+            <button class="btn" onclick="foo(this)"> Game</button>
         </div>
         <div class="popularposts">
             <div class="left">
                 <!-- series of blocks -->
                 <div class="posts">
                     <!-- single block -->
-                    <?php
-                    if ($posted) {
-                        date_default_timezone_set('America/Los_Angeles');
-                        $postedTime = date('Y-m-d h:i:s a');
-                        $diff = abs(strtotime($postedTime) - strtotime($date));
-                        $years   = floor($diff / (365 * 60 * 60 * 24));
-                        $months  = floor(($diff - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-                        $days    = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
-                        $hours   = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24) / (60 * 60));
-                        $minutes  = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60) / 60);
-                        $seconds = floor(($diff - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24 - $days * 60 * 60 * 24 - $hours * 60 * 60 - $minuts * 60));
-                        echo '<div class="postBlock">
-                        <div class="post">
-                            <div class="postHeader">
-                                <div class="authorIcon">
-                                    <img width="20pt" height="20pt">
-                                </div>
-                                <div class="author"><p>' . $username . '</p></div>
-                                <div class="postTime"><p>&middot; ';
-                        if ($years >= 1) {
-                            echo $years;
-                        }
-                        if ($years < 1 && $months >= 1) {
-                            echo $months;
-                        }
-                        if ($months < 1 && $days >= 1) {
-                            echo $days;
-                        }
-                        if ($days < 1 && $hours >= 1) {
-                            echo $hours;
-                        }
-                        if ($hours < 1 && $minutes >= 1) {
-                            echo $minutes;
-                        }
-                        if ($minutes < 1 && $seconds >= 1) {
-                            echo $seconds;
-                        }
-                        /* pull $img from DB and $img should be converted to src */
-                        /* TODO */
-                        echo 'ago</p>
-                    </div>
-                        </div>
-                            <div class="content">
-                                <p>' . $content . '</p>
-                            </div>
-                            <div class="image">
-                                <img class="img" src="' . $img . '">
-                            </div>
-                        <div class="commentBlock">
-                            <div class="commentIcon">
-                                <img width="20pt" height="20pt" src="img/commentIcon.png">
-                            </div>
-                        <div class="comments">
-                            <p>Comments</p>
-                        </div>
-                    </div>
-                </div>
-            </div>';
-                    }
-                    ?>
                     <div class="postBlock">
                         <div class="post">
                             <div class="postHeader">
-                                <div class="authorIcon">
-                                    <img width="20pt" height="20pt">
-                                </div>
                                 <div class="author">
                                     <p>Author</p>
                                 </div>
                                 <div class="postTime">
                                     <p>&middot; Posted (time) ago</p>
+                                </div>
+                                <div class="postTag">
+                                    <p class="idp">   tag</p>
                                 </div>
                             </div>
                             <div class="content">
@@ -336,14 +309,14 @@ if (isset($_POST['submit'])) {
                     <div class="postBlock">
                         <div class="post">
                             <div class="postHeader">
-                                <div class="authorIcon">
-                                    <img width="20pt" height="20pt">
-                                </div>
                                 <div class="author">
                                     <p>Author2</p>
                                 </div>
                                 <div class="postTime">
                                     <p>&middot; Posted (time) ago</p>
+                                </div>
+                                <div class="postTag">
+                                    <p class="idp">   tag</p>
                                 </div>
                             </div>
                             <div class="content">

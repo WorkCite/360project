@@ -132,4 +132,13 @@ function showCom(str) {
     xmlhttp.open("POST","home.php?q="+postId,true);
     xmlhttp.send();
   }
+  $('.btn').click(function() {
+    $.ajax({
+      type: "POST",
+      url: "filter.php",
+      data: {action: $(this).val() }
+    }).done(function( msg ) {
+      alert( "Data Saved: " + msg );
+    });
+  });
 }

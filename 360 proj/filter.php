@@ -2,7 +2,6 @@
     if (isset($_POST['action']))
 	{   
         $tag=$_POST['action'];
-        $sql="SELECT content,img,date,username FROM post WHERE tag=$id;";
         $host = "localhost";
         $database = "360project";
         $user = "webuser";

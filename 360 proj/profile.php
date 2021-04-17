@@ -196,7 +196,6 @@ if (isset($_POST['aboutbtn'])) {
                 <div class="intro"> 
                     <p style="padding: 5px;">Introduce yourself to everyone!</p>
                 </div>
-                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">modify</button>
             </div>
             <div class="item7">
                 <h2 style="margin-left: 10%;">Recent Photo</h2>

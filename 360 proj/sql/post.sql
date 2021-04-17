@@ -13,10 +13,10 @@ INSERT INTO `post` (`postid`, `content`, `img`,`date`,`username`,`tag`) VALUES
 ('0', 'hi', 'null','11:11:11','test','none');
 
 INSERT INTO `post` (`postid`, `content`, `img`,`date`,`username`,`tag`) VALUES
-('0', 'hi hi', 'null','11:11:22','admin','music');
+('2', 'hi hi', 'null','11:11:22','admin','music');
 
 INSERT INTO `post` (`postid`, `content`, `img`,`date`,`username`,`tag`) VALUES
-('0', 'hi hi hi', 'null','11:11:33','12341','art');
+('3', 'hi hi hi', 'null','11:11:33','12341','art');
 
 
 

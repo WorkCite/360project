@@ -28,7 +28,6 @@
 			xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 			xmlHttp.onreadystatechange = callback;  
 			xmlHttp.send("action=" + n.value); 
-      
 		}  
 		function callback(){  
 			if(xmlHttp.readyState == 4){  
@@ -75,7 +74,7 @@
         echo "<table>";
         while($row = mysqli_fetch_assoc($results)){
           if($row != null){
-            echo "<tr><td> " . $row['postid'] . "</td><td>" . $row['content'] . "</td><td>" . $row['img'] . "</td><td>" . $row['date'] . "</td><td><button type='button' class='btn' id='button' onclick='foo(this)'  value=" . $row['postid'] . ">delete</button></td></tr>";
+            echo "<tr><td> " . $row['postid'] . "</td><td>" . $row['content'] . "</td><td>" . $row['img'] . "</td><td>" . $row['date'] . "</td><td><button type='button' class='btn' id='button' onclick='foo(this)'  value=" .$row['postid'] . ">delete</button></td></tr>";
           }
         }
         echo  "</div>";

@@ -61,8 +61,8 @@ if ($_SESSION['isLogin'] != null) {
             //$pid = $_SESSION['postid'];
             //$pid = $_SESSION['postid'];
             //echo "<script>console.log('pid'+'$pid');</script>";
-            $q = intval($_POST['q']);
-            echo "<script>console.log('pid: '+'$q');</script>";
+            //$q = intval($_POST['q']);
+            //echo "<script>console.log('pid: '+'$q');</script>";
             $host = "localhost";
             $database = "360project";
             $user = "webuser";
@@ -78,7 +78,7 @@ if ($_SESSION['isLogin'] != null) {
                 else
                 {
                     //good connection, so do you thing
-                    $sql = "select content, date from comment where postid = '".$q."';";
+                    $sql = "select content, date from comment;";
                     $results = mysqli_query($connection, $sql);
                     //and fetch requsults
                     while( $row = mysqli_fetch_assoc($results)){
@@ -160,7 +160,7 @@ if (isset($_POST['innerSubmit'])) {
             </div>
         </div>
         <div class="formButton">
-            <input type="psubmit" class="postButton" name="submit">
+            <input type="submit" class="postButton" name="psubmit">
             <label class="fileToUpload" for="fileToUpload"><img width="30pt" height="30pt" src="img/attachmentIcon3.png"></label>
             <input onChange="readURL(this);" type="file" accept=".JPEG,.PNG,.GIF,.TIFF,.PDF" name="fileToUpload" id="fileToUpload">
         </div>

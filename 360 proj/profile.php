@@ -27,7 +27,7 @@ $numpost = null;
 $postimg = array();
 $connection = mysqli_connect($host, $user, $password0, $database);
 $error = mysqli_connect_error();
-$tn = null;
+$procontent = null;
 if($error != null)
     {
     $output = "<p>Unable to connect to database!</p>";
@@ -36,13 +36,14 @@ if($error != null)
     else
     {
         //good connection, so do you thing
-        $sql = "select username, email from users where username = '$username';";
+        $sql = "select username, email,content from users where username = '$username';";
         $results = mysqli_query($connection, $sql);
         //and fetch requsults
         $row = mysqli_fetch_assoc($results);
         if($row != null){
             $uname = $row['username'];
             $email = $row['email'];
+            $procontent = $row['content'];
         }
        /* $sql1 = "select img from post where username = '$tname' ;";
         $results1 = mysqli_query($connection, $sql1);
@@ -97,7 +98,7 @@ if($error != null)
 <div class="introduction">
     <div class="layout">
     <span class="cls">&times;</span>
-        <form class="introform">
+        <form class="introform" method="POST" action="" enctype="multipart/form-data">
             <div class="taBlock">
             <textarea style="width:80%; height:50pt;max-height:200pt;outline:none;border:none; resize:unset;" name = "ta" placeholder="Add Introduction" oninvalid="this.setCustomValidity('Introduction should not be empty!')" oninput="this.setCustomValidity('')" required></textarea>
             </div>
@@ -112,14 +113,14 @@ if($error != null)
     <!--about php-->
 <?php 
 $post = false;
-if (isset($_POST['aboutbtn'])) {
+if (isset($_POST['save'])) {
     $host = "localhost";
     $database = "360project";
     $user = "webuser";
     $password = "P@ssw0rd";
 
     $connection = mysqli_connect($host, $user, $password, $database);
-
+    $content=null;
     $error = mysqli_connect_error();
     if ($error != null) {
         $output = "<p>Unable to connect to database!</p>";
@@ -127,10 +128,11 @@ if (isset($_POST['aboutbtn'])) {
     } else {
 
         //  content
-        if (isset($_POST['aboutInput'])) {
-            $content = $_POST['aboutInput'];
+        if (isset($_POST['ta'])) {
+            $content = $_POST['ta'];
+            echo "<script>console.log('content'+'$content');</script>";
         }
-        $sqlcom = "INSERT INTO user(content) VALUES ('$content') WHERE username = '$username';";
+        $sqlcom = "UPDATE users SET content = '$content' WHERE username = '$username';";
         $resultcom = mysqli_query($connection, $sqlcom);
         if ($resultcom) {
             echo 'Posted successfully!';
@@ -207,7 +209,7 @@ if (isset($_POST['aboutbtn'])) {
             <div class="item6">
                 <h2 style="margin-left: 10%;">About</h2>
                 <div class="intro"> 
-                    <p class="intro1"style="padding: 5px;">Introduce yourself to everyone!</p>
+                   <?php echo "<p class='intro1'style='padding: 5px;'>".$procontent."</p>";?>
                 </div>
             </div>
             <div class="item7">

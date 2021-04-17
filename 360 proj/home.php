@@ -304,7 +304,7 @@ if (isset($_POST['submit'])) {
             <button class="btn" name="music"value="music"> Music</button>
             <button class="btn" name="sports"value="sports"> Sports</button>
             <button class="btn" name="art"value="art"> Art</button>
-            <button class="btn" name="game"value="game"> Game</button>
+            <button class="btn" name="game"value="game" > Game</button>
         </div>
         <div class="popularposts">
             <div class="left">
@@ -314,7 +314,6 @@ if (isset($_POST['submit'])) {
                     <?php 
                     //$pid = $_SESSION['postid'];
                     //echo "<script>console.log('pid'+'$pid');</script>";
-                    function abc($name){
                     $host = "localhost";
                     $database = "360project";
                     $user = "webuser";
@@ -326,8 +325,8 @@ if (isset($_POST['submit'])) {
                     $pdate = null;
                     $ptempid = null;
                     $_SESSION['postid']=null;
-                    $type =$name;
-                    echo $type.'1111';
+                     $type =$_SESSION['type'];
+                     echo $type.'1111';
                     if($error != null)
                         {
                         $output = "<p>Unable to connect to database!</p>";
@@ -384,7 +383,6 @@ if (isset($_POST['submit'])) {
                             mysqli_free_result($presults);
                             mysqli_close($connection); 
                         }
-                    }
                     ?>
                    <!-- <div class="postBlock">
                         <div class="post">

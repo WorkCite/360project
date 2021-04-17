@@ -85,16 +85,29 @@ if($error != null)
     }
 ?>
 <head>
-    <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/profile.css">
+    <link rel="stylesheet" href="./css/home.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script language="JavaScript" type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" src="js/prfile.js"></script>
+    <script type="text/javascript" src="js/profile.js"></script>
     <title>My Discussion Forum Website</title>
 </head>
-
+<div class="introduction">
+    <div class="layout">
+    <span class="cls">&times;</span>
+        <form class="introform">
+            <div class="taBlock">
+            <textarea style="width:80%; height:50pt;max-height:200pt;outline:none;border:none; resize:unset;" name = "ta" placeholder="Add Introduction" oninvalid="this.setCustomValidity('Introduction should not be empty!')" oninput="this.setCustomValidity('')" required></textarea>
+            </div>
+            <div class="btnBlock">
+            <button style="float: right; width:60px;height:30px; border-radius:10px;  background-color: rgb(75, 146, 253);
+  border-color: rgb(75, 146, 253); color:white;"name="save"type="submit">SAVE</button>
+            </div>
+        </form>
+    </div>
+</div>
 <body>
     <!--about php-->
 <?php 
@@ -166,7 +179,7 @@ if (isset($_POST['aboutbtn'])) {
                     echo "<script>console.log('$uname');</script>";
                     echo "<script>console.log('$email');</script>";
                     echo "
-                    <h1>$username</h1>
+                    <h1 style='width:fit-content;'>$username</h1>
                     <p>$email</p>
                     ";
                 }
@@ -194,9 +207,8 @@ if (isset($_POST['aboutbtn'])) {
             <div class="item6">
                 <h2 style="margin-left: 10%;">About</h2>
                 <div class="intro"> 
-                    <p style="padding: 5px;">Introduce yourself to everyone!</p>
+                    <p class="intro1"style="padding: 5px;">Introduce yourself to everyone!</p>
                 </div>
-                <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">modify</button>
             </div>
             <div class="item7">
                 <h2 style="margin-left: 10%;">Recent Photo</h2>

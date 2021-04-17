@@ -498,3 +498,7 @@ footer {
 .dropdown:hover .username {
   background-color: #f7f7f7;
 }
+.allimg{
+  width: 260px;
+  height: 196px;
+}

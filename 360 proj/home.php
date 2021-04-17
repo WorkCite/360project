@@ -264,9 +264,9 @@ if (isset($_POST['psubmit'])) {
                 <h1>Trending</h1>
             </div>
             <div class="group">
-                <div class="col"> <img src="img/1.gif"></div>
-                <div class="col"> <img src="img/1.gif"></div>
-                <div class="col"> <img src="img/1.gif"></div>
+                <div class="col"> <img class="allimg" src="img/picture.png"></div>
+                <div class="col"> <img class="allimg" src="img/picture.png"></div>
+                <div class="col"> <img class="allimg" src="img/picture.png"></div>
             </div>
         </div>
         <div class="sub-header">
@@ -397,7 +397,7 @@ if (isset($_POST['psubmit'])) {
                                             <p>'.$pcon.'</p>
                                         </div>
                                         <div class="image">
-                                            <img class="img" src="img/1.gif">
+                                        <img class="allimg" src="img/picture.png">
                                         </div>
                                         <div class="commentBlock">
                                             <div class="commentIcon">

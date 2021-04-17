@@ -115,7 +115,7 @@
                 <span>Already have account?</span>
                 <input type="email" placeholder="email" name="lemail">
                 <input type="password" placeholder="password" name="lpassword">
-                <a href="#">Forget Password?</a>
+                <a class="forgetpassword"href="forgotpassword.php">Forget Password?</a>
                 <button onclick="form.submit()">Login</button>
             </form>
         </div>

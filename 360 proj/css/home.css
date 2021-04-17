@@ -331,8 +331,10 @@ footer {
   outline: none !important;
 }
 .inputContent {
+  padding:1em;
+  border-radius:10pt;
   resize:unset;
-  border: none;
+  border: 0;
   margin-top: 1em;
   width: 100%;
   min-height: 100pt;
@@ -343,6 +345,8 @@ footer {
 
 .inputContent:focus {
   outline: none;
+  border:1px solid #eee;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
 .formButton {

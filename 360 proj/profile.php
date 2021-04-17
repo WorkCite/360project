@@ -200,10 +200,10 @@ if (isset($_POST['aboutbtn'])) {
             <div class="item7">
                 <h2 style="margin-left: 10%;">Recent Photo</h2>
                 <div class="i7-content"> 
-                    <img class="postimg" src="./img/1.gif">
-                    <img class="postimg" src="./img/1.gif">
-                    <img class="postimg" src="./img/1.gif">
-                    <img class="postimg" src="./img/1.gif">
+                    <img class="postimg" src="./img/picture.png">
+                    <img class="postimg" src="./img/picture.png">
+                    <img class="postimg" src="./img/picture.png">
+                    <img class="postimg" src="./img/picture.png">
                     <?php 
                    /* if($postimg != null){
                         for ($i=0; $i<sizeof($postimg); $i++)

@@ -257,9 +257,9 @@ if (isset($_POST['submit'])) {
                 <h1>Trending</h1>
             </div>
             <div class="group">
-                <div class="col"> <img src="img/1.gif"></div>
-                <div class="col"> <img src="img/1.gif"></div>
-                <div class="col"> <img src="img/1.gif"></div>
+                <div class="col"> <img class="postimg" src="./img/picture.png"></div>
+                <div class="col"> <img class="postimg" src="./img/picture.png"></div>
+                <div class="col"> <img class="postimg" src="./img/picture.png"></div>
             </div>
         </div>
         <div class="sub-header">
@@ -294,7 +294,7 @@ if (isset($_POST['submit'])) {
                                 <p>This is a post.</p>
                             </div>
                             <div class="image">
-                                <img class="img" src="img/1.gif">
+                            <img class="postimg" src="./img/picture.png">
                             </div>
                             <div class="commentBlock">
                                 <div class="commentIcon">
@@ -323,7 +323,7 @@ if (isset($_POST['submit'])) {
                                 <p>This is a post2.</p>
                             </div>
                             <div class="image">
-                                <img class="img" src="img/1.gif">
+                            <img class="postimg" src="./img/picture.png">
                             </div>
                             <div class="commentBlock">
                                 <div class="commentIcon">
@@ -352,7 +352,7 @@ if (isset($_POST['submit'])) {
                                 <p>This is a post3.</p>
                             </div>
                             <div class="image">
-                                <img class="img" src="img/1.gif">
+                            <img class="postimg" src="./img/picture.png">
                             </div>
                             <div class="commentBlock">
                                 <div class="commentIcon">

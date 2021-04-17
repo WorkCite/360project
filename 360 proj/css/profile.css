@@ -109,6 +109,6 @@
   margin-right: 5%;
 }
 .postimg{
-  max-width: 270px;
-  max-height: 196px;
+  width: 270px;
+  height: 196px;
 }

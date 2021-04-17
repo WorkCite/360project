@@ -8,6 +8,7 @@
         $semail = $_POST["semail"];
         $susername = $_POST["susername"];
         $sp=md5($spassword);
+        $scontent="Introduce yourself";
     }
     else if(isset( $_POST["lpassword"])){
     $lemail = $_POST["lemail"];
@@ -62,7 +63,7 @@
         echo "<script> {window.alert('User already exists with this name and/or email');} </script>";
         }
         if((mysqli_fetch_assoc($results1))==null&&(mysqli_fetch_assoc($results2))==null){
-            $sql3 = "insert into users(username,email, password) VALUES ('$susername','$semail','$sp');";
+            $sql3 = "insert into users(username,email, password,content) VALUES ('$susername','$semail','$sp','$scontent');";
             mysqli_query($connection, $sql3);
             $_SESSION['username'] = $susername;
             $_SESSION['isLogin']=true;

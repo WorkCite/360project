@@ -20,13 +20,21 @@ $(function () {
       var str = $(event.target).parents(".postBlock").find(".content").text();
       // post image
       var str2 = $(event.target).parents(".postBlock").find(".image");
+      //post postid
+      var postId = $(event.target).parents(".postBlock").find(".idp").text();
+      console.log("id: "+postId);
+      
       // create nodes
       var content = $("<p>" + str + "</p>");
       content.css({
         color: "black",
       });
-      p.before(author.clone());
+      var intid = $("<p class='tempid'>" + postId + "</p>");
+      intid.css({
+        color: "black",
+      });
       p.append(content);
+      p.append(intid);
       p.append(str2.clone());
       modal.fadeIn(500);
     }
@@ -92,7 +100,7 @@ $(function () {
     var div = $(
       '<div class="innerBlock"></div>'
     ).css('display','block');
-    var form =$('<form class="commentForm" method="POST" action="" enctype="multipart/form-data"></form>').appendTo(div);
+    var form =$('<form onsbumit="showCom(this.value)" class="commentForm" method="POST" action="" enctype="multipart/form-data"></form>').appendTo(div);
     var ta =$('<textarea style="width:200pt; height:50pt; outline:none;" name="commentInput" placeholder="Add description" oninvalid="this.setCustomValidity(\'Enter your description\')" oninput="this.setCustomValidity(\'\')" required></textarea>')
       .appendTo(form)
       .css({
@@ -104,11 +112,24 @@ $(function () {
     });
     var btn =$('<button type="submit" name="innerSubmit">Submit</button>')
       .appendTo(form);
-    var inner = $(".innerComment");
+      var inner = $(".innerComment");
     inner.append(div);
     
   });
   /* newcomment */
 
-
 });
+function showCom(str) {
+  if (str == "") {
+    return console.log("There is no comment in this block");
+  } else {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementById("commentlist").innerHTML = this.responseText;
+      }
+    };
+    xmlhttp.open("POST","home.php?q="+postId,true);
+    xmlhttp.send();
+  }
+}

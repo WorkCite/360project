@@ -112,3 +112,8 @@
   width: 270px;
   height: 196px;
 }
+.item8{
+  grid-column: span 8;
+	grid-row: span 2;
+  color: black;
+}

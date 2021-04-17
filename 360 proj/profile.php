@@ -214,6 +214,80 @@ if (isset($_POST['aboutbtn'])) {
                     }*/
                     ?>
                 </div>
+                <div class="item8">
+                <h2 style="margin-left: 10%;">POST</h2>
+                <?php 
+                    //$pid = $_SESSION['postid'];
+                    //echo "<script>console.log('pid'+'$pid');</script>";
+                    $host = "localhost";
+                    $database = "360project";
+                    $user = "webuser";
+                    $password0 = "P@ssw0rd";
+                    $connection = mysqli_connect($host, $user, $password0, $database);
+                    $error = mysqli_connect_error();
+                    $pname = null;
+                    $pcon = null;
+                    $pdate = null;
+                    $ptempid = null;
+                    $_SESSION['postid']=null;
+                    if($error != null)
+                        {
+                        $output = "<p>Unable to connect to database!</p>";
+                        exit($output);
+                        }
+                        else
+                        {
+                            //good connection, so do you thing
+                            $psql = "SELECT*FROM post WHERE username = '$username';";
+                            $presults = mysqli_query($connection, $psql);
+                            //and fetch requsults
+                            while($prow = mysqli_fetch_assoc($presults)){
+                                if($prow != null){
+                                    $pname = $prow['username'];
+                                    $pdate = $prow['date'];
+                                    $pcon  = $prow['content'];
+                                    $ptempid = $prow['postid'];
+                                    $_SESSION['postid'] = $ptempid;
+                                    echo ' 
+                                    <div class="postBlock">
+                                    <div class="post">
+                                        <div class="postHeader">
+                                            <div class="authorIcon">
+                                                <img width="20pt" height="20pt">
+                                            </div>
+                                            <div class="author">
+                                                <p>'.$pname.'</p>
+                                            </div>
+                                            <div class="postTime">
+                                                <p>&middot; '.$pdate.'</p>
+                                            </div>
+                                            <div class="postTime">
+                                                <p class="idp">'.$ptempid.'</p>
+                                            </div>
+                                        </div>
+                                        <div class="content">
+                                            <p>'.$pcon.'</p>
+                                        </div>
+                                        <div class="image">
+                                        <img class="postimg" src="img/picture.png">
+                                        </div>
+                                        <div class="commentBlock">
+                                            <div class="commentIcon">
+                                                <img width="20pt" height="20pt" src="img/commentIcon.png">
+                                            </div>
+                                            <div class="comments">
+                                                <p>Comments</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>';
+                                }
+                            }
+                            mysqli_free_result($presults);
+                            mysqli_close($connection); 
+                        }
+                    ?>
+                </div>
             </div>
     </container>
     <footer>
